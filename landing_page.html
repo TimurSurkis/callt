@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice Receptionist | Kielce</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgWhite: '#F5F1EA',
+                        terracotta: '#EC862C',
+                        darkBg: '#22262B',
+                        cyanAccent: '#3E8989',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    boxShadow: {
+                        'glow': '0 0 30px rgba(236, 134, 44, 0.4)',
+                        'glow-lg': '0 0 60px rgba(236, 134, 44, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom range slider styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #EC862C;
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.1s;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #e2e8f0;
+            border-radius: 4px;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        
+        /* Smooth height transition for accordion */
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            max-height: 200px;
+            opacity: 1;
+        }
+        .icon-rotate {
+            transition: transform 0.3s ease;
+        }
+        .open .icon-rotate {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="font-sans text-darkBg bg-bgWhite antialiased selection:bg-terracotta selection:text-white relative">
+
+    <!-- 1. Floating Header -->
+    <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl bg-white/80 backdrop-blur-md border border-white/40 shadow-lg shadow-black/5 rounded-full z-50 px-6 py-3 flex items-center justify-between transition-all">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-darkBg text-white flex items-center justify-center font-serif font-bold text-sm">AI</div>
+            <span class="font-serif font-bold text-xl tracking-tight">Call-t</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
+            <a href="#how-it-works" class="hover:text-terracotta transition-colors">Jak to działa</a>
+            <a href="#cennik" class="hover:text-terracotta transition-colors">Cennik</a>
+            <a href="#faq" class="hover:text-terracotta transition-colors">FAQ</a>
+        </nav>
+        <a href="#cta" class="bg-terracotta hover:bg-[#d47726] text-white px-6 py-2 rounded-full font-medium text-sm transition-all shadow-md hover:shadow-glow">
+            Wypróbuj
+        </a>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section class="pt-40 pb-48 px-6 lg:px-8 max-w-7xl mx-auto relative overflow-hidden">
+        <div class="absolute top-20 right-0 w-96 h-96 bg-terracotta/10 blur-3xl rounded-full -z-10"></div>
+        <div class="absolute top-40 left-10 w-72 h-72 bg-cyanAccent/10 blur-3xl rounded-full -z-10"></div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Left: Copy -->
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-gray-200 text-sm font-medium text-gray-600 mb-6 shadow-sm">
+                    <span class="text-terracotta">🔥</span> Nowość dla biznesów w Kielcach
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-serif font-bold leading-tight mb-6 text-darkBg">
+                    Telefon dzwoni.<br>
+                    <span class="text-terracotta">Ręce zajęte.</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-10 leading-relaxed">
+                    Nie trać klientów, gdy jesteś pod autem lub na drabinie. Nasz AI-asystent odbiera połączenia, umawia wizyty i wysyła Ci SMS-a. Pracuje dla Ciebie 24/7.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 items-center">
+                    <a href="#cta" class="group flex items-center justify-center gap-3 bg-terracotta text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg hover:shadow-glow w-full sm:w-auto hover:-translate-y-0.5">
+                        Wypróbuj teraz
+                        <img src="Right Arrow.svg" alt="Arrow" class="w-5 h-5 invert transition-transform group-hover:translate-x-1">
+                    </a>
+                    <span class="text-sm text-gray-500 font-medium">Brak długoterminowych umów</span>
+                </div>
+            </div>
+            
+            <!-- Right: 3D Visual -->
+            <div class="relative lg:h-[500px] flex items-center justify-center">
+                <div class="relative z-10 bg-white p-6 pr-8 rounded-2xl shadow-glow flex items-center gap-6 animate-[bounce_4s_infinite] max-w-sm w-full border border-gray-100">
+                    <button class="w-16 h-16 rounded-full bg-terracotta flex items-center justify-center shrink-0 shadow-md hover:scale-105 transition-transform">
+                        <img src="Play.svg" alt="Play" class="w-6 h-6 invert ml-1">
+                    </button>
+                    <div class="flex-1 flex flex-col gap-2">
+                        <div class="text-sm font-medium text-gray-500">Posłuchaj prawdziwej rozmowy</div>
+                        <img src="Waveform (2).svg" alt="Audio Wave" class="w-full h-8 opacity-70 filter brightness-0">
+                    </div>
+                </div>
+                
+                <!-- Decorative background elements behind the card -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-terracotta/20 rounded-full animate-ping" style="animation-duration: 3s;"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-cyanAccent/20 rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Calculator (Overlapping) -->
+    <section class="relative z-20 px-6 -mt-32 mb-20 max-w-5xl mx-auto">
+        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12">
+            <h2 class="text-3xl font-serif font-bold text-darkBg mb-8 text-center md:text-left">Ile pieniędzy tracicie?</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Slider -->
+                <div>
+                    <label for="missedCalls" class="block text-gray-600 font-medium mb-6">Wybierz ilość tygodniowo nieodebranych połączeń:</label>
+                    <div class="relative pt-2">
+                        <input type="range" id="missedCalls" min="1" max="50" value="20" class="w-full">
+                        <div class="flex justify-between text-xs text-gray-400 mt-2 font-medium">
+                            <span>1</span>
+                            <span>25</span>
+                            <span>50+</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center text-lg font-bold text-terracotta">
+                        <span id="callsDisplay">20</span> połączeń tygodniowo
+                    </div>
+                </div>
+                
+                <!-- Result -->
+                <div class="bg-bgWhite rounded-2xl p-8 text-center md:text-right border-l-4 border-terracotta shadow-inner">
+                    <div class="text-sm text-gray-500 font-medium uppercase tracking-wider mb-2">straconych co miesiąc</div>
+                    <div class="text-5xl md:text-6xl font-serif font-bold text-darkBg mb-2">
+                        <span id="lostMoney">12 000</span> zł
+                    </div>
+                    <div class="text-sm text-gray-500">Średnia wartość koszyka - 150 zł.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. How it works -->
+    <section id="how-it-works" class="bg-darkBg text-white py-32 px-6 relative z-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto relative">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-center mb-20">Jak to działa?</h2>
+            
+            <!-- Connecting Line for Desktop -->
+            <div class="hidden md:block absolute top-1/2 left-[10%] right-[10%] h-0.5 border-t-2 border-dashed border-white/20 -z-10 translate-y-4"></div>
+            
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <!-- Step 1 -->
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-10 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300 shadow-xl group">
+                    <div class="w-20 h-20 mx-auto bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-terracotta/20 transition-colors">
+                        <img src="Phone.svg" alt="Phone" class="w-10 h-10 invert">
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Klient dzwoni</h3>
+                    <p class="text-gray-400 text-sm">Nie masz czasu odebrać, bo obsługujesz klienta lub masz brudne ręce.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-10 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300 shadow-xl group relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-terracotta text-xs font-bold px-3 py-1 rounded-full shadow-lg">15 sekund</div>
+                    <div class="w-20 h-20 mx-auto bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-terracotta/20 transition-colors">
+                        <img src="Waveform.svg" alt="Waveform" class="w-10 h-10 invert">
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Bot odbiera i rezerwuje termin</h3>
+                    <p class="text-gray-400 text-sm">Inteligentny asystent wita klienta naturalnym głosem i wpisuje go w kalendarz.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-10 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300 shadow-xl group">
+                    <div class="w-20 h-20 mx-auto bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-terracotta/20 transition-colors">
+                        <img src="Envelope.svg" alt="Envelope" class="w-10 h-10 invert">
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Administrator otrzymuje SMS</h3>
+                    <p class="text-gray-400 text-sm">Od razu wiesz kto dzwonił i w jakiej sprawie. Masz wszystko pod kontrolą.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Niches / Tabs -->
+    <section class="bg-bgWhite py-32 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-serif font-bold text-center text-darkBg mb-16">Zobacz, jak to wygląda w twojej branży</h2>
+            
+            <!-- Tabs Navigation -->
+            <div class="flex flex-col md:flex-row gap-4 justify-center mb-12">
+                <button data-tab="auto" class="niche-tab bg-terracotta text-white shadow-lg flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-semibold transition-all w-full md:w-auto">
+                    <img src="Wheel.svg" alt="Wheel" class="w-6 h-6 invert tab-icon">
+                    Autoserwisy
+                </button>
+                <button data-tab="mistrzowie" class="niche-tab bg-white text-gray-600 border border-gray-200 hover:border-terracotta hover:text-terracotta flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-semibold transition-all w-full md:w-auto">
+                    <img src="Wrench-Screwdriver.svg" alt="Wrench" class="w-6 h-6 opacity-60 tab-icon">
+                    Mistrzowie
+                </button>
+                <button data-tab="ekipy" class="niche-tab bg-white text-gray-600 border border-gray-200 hover:border-terracotta hover:text-terracotta flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-semibold transition-all w-full md:w-auto">
+                    <img src="Hard hat.svg" alt="Hard Hat" class="w-6 h-6 opacity-60 tab-icon">
+                    Ekipy
+                </button>
+            </div>
+
+            <!-- Content Card -->
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-10 max-w-4xl mx-auto transition-all duration-300">
+                <div class="flex-1 text-center md:text-left">
+                    <p id="nicheText" class="text-2xl font-serif text-darkBg leading-snug">
+                        Mechanik pod autem <span class="font-bold text-terracotta">nie słyszy telefonu</span> — klient dzwoni do konkurencji.
+                    </p>
+                </div>
+                
+                <div class="flex-1 w-full bg-bgWhite rounded-2xl p-3 flex items-center gap-4 border border-gray-200 shadow-sm">
+                    <button class="w-14 h-14 shrink-0 bg-terracotta hover:bg-[#d47726] transition-colors rounded-xl flex items-center justify-center shadow-md">
+                        <img src="Play.svg" alt="Play" class="w-6 h-6 invert ml-1">
+                    </button>
+                    <div class="flex-1">
+                        <img src="Waveform (2).svg" alt="Waveform" class="w-full h-8 opacity-50 filter brightness-0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FAQ -->
+    <section id="faq" class="py-32 px-6 max-w-7xl mx-auto border-t border-gray-200">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+            <div class="sticky top-32">
+                <div class="w-16 h-2 bg-cyanAccent rounded-full mb-8"></div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-darkBg leading-tight mb-6">
+                    To normalne, że macie wątpliwości
+                </h2>
+                <p class="text-gray-600 text-lg">Zebrać wszystkie pytania w jednym miejscu to podstawa. Zobacz, jak rozwiązujemy najczęstsze obawy naszych klientów.</p>
+            </div>
+            
+            <div class="flex flex-col gap-4">
+                <!-- Accordion Item 1 -->
+                <div class="accordion-item bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="accordion-btn w-full px-6 py-5 text-left font-semibold text-lg flex items-center justify-between hover:text-terracotta transition-colors">
+                        Czy to brzmi jak robot?
+                        <img src="Plus.svg" alt="Expand" class="w-6 h-6 icon-rotate">
+                    </button>
+                    <div class="accordion-content px-6 bg-bgWhite border-t border-gray-100">
+                        <p class="py-4 text-gray-600">Nie, nasz asystent wykorzystuje najnowsze modele językowe z konwersacyjnym głosem, który w 95% przypadków jest nierozpoznawalny od człowieka.</p>
+                    </div>
+                </div>
+                
+                <!-- Accordion Item 2 -->
+                <div class="accordion-item bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="accordion-btn w-full px-6 py-5 text-left font-semibold text-lg flex items-center justify-between hover:text-terracotta transition-colors">
+                        Co jeśli bot nie będzie znał odpowiedzi?
+                        <img src="Plus.svg" alt="Expand" class="w-6 h-6 icon-rotate">
+                    </button>
+                    <div class="accordion-content px-6 bg-bgWhite border-t border-gray-100">
+                        <p class="py-4 text-gray-600">W takim przypadku bot kulturalnie informuje, że przekaże sprawę i prosi o chwilę cierpliwości. Od razu wysyła Ci powiadomienie SMS, byś mógł oddzwonić, gdy będzanie wolny.</p>
+                    </div>
+                </div>
+                
+                <!-- Accordion Item 3 -->
+                <div class="accordion-item bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="accordion-btn w-full px-6 py-5 text-left font-semibold text-lg flex items-center justify-between hover:text-terracotta transition-colors">
+                        Czy muszę zmieniać numer telefonu?
+                        <img src="Plus.svg" alt="Expand" class="w-6 h-6 icon-rotate">
+                    </button>
+                    <div class="accordion-content px-6 bg-bgWhite border-t border-gray-100">
+                        <p class="py-4 text-gray-600">Nie! Ustawiamy proste przekierowanie warunkowe z Twojego obecnego numeru. Bot odbiera tylko wtedy, gdy Ty nie możesz odebrać przez np. 15 sekund.</p>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 4 -->
+                <div class="accordion-item bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+                    <button class="accordion-btn w-full px-6 py-5 text-left font-semibold text-lg flex items-center justify-between hover:text-terracotta transition-colors">
+                        Czy to jest zgodne z RODO?
+                        <img src="Plus.svg" alt="Expand" class="w-6 h-6 icon-rotate">
+                    </button>
+                    <div class="accordion-content px-6 bg-bgWhite border-t border-gray-100">
+                        <p class="py-4 text-gray-600">Tak, działamy w pełni zgodnie z przepisami RODO, dbając o bezpieczeństwo danych Twoich i Twoich klientów na każdym etapie przetwarzania.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Pricing -->
+    <section id="cennik" class="bg-darkBg py-32 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-serif font-bold text-center text-white mb-20">Prosty i przejrzysty cennik</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center max-w-4xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-white text-darkBg rounded-3xl p-10 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-2">Standard</h3>
+                    <p class="text-gray-500 mb-6">Dla małych zakładów.</p>
+                    <div class="text-5xl font-serif font-bold mb-8">
+                        399 <span class="text-xl text-gray-400 font-sans font-normal">zł / msc</span>
+                    </div>
+                    <ul class="space-y-4 mb-10 text-gray-600 font-medium">
+                        <li class="flex items-center gap-3"><span class="text-cyanAccent text-xl font-bold">✓</span> Odbieranie 100% połączeń</li>
+                        <li class="flex items-center gap-3"><span class="text-cyanAccent text-xl font-bold">✓</span> Umawianie wizyt</li>
+                        <li class="flex items-center gap-3"><span class="text-cyanAccent text-xl font-bold">✓</span> Powiadomienia SMS</li>
+                    </ul>
+                    <a href="#cta" class="block w-full py-4 rounded-xl border-2 border-gray-200 text-center font-bold hover:border-terracotta hover:text-terracotta transition-colors">Wybieram Standard</a>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-white text-darkBg rounded-3xl p-10 shadow-glow-lg border-4 border-terracotta md:scale-105 relative transform z-10">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-terracotta text-white font-bold px-4 py-1.5 rounded-full text-sm shadow-md">Najpopularniejszy</div>
+                    <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                    <p class="text-gray-500 mb-6">Pełna integracja z Twoim biznesem.</p>
+                    <div class="text-5xl font-serif font-bold mb-8">
+                        599 <span class="text-xl text-gray-400 font-sans font-normal">zł / msc</span>
+                    </div>
+                    <ul class="space-y-4 mb-10 text-gray-600 font-medium">
+                        <li class="flex items-center gap-3"><span class="text-terracotta text-xl font-bold">✓</span> Wszystko z pakietu Standard</li>
+                        <li class="flex items-center gap-3"><span class="text-terracotta text-xl font-bold">✓</span> Integracja z kalendarzem Google</li>
+                        <li class="flex items-center gap-3"><span class="text-terracotta text-xl font-bold">✓</span> Odpowiadanie na pytania o ceny</li>
+                        <li class="flex items-center gap-3"><span class="text-terracotta text-xl font-bold">✓</span> Dedykowany asystent wdrożenia</li>
+                    </ul>
+                    <a href="#cta" class="block w-full py-4 rounded-xl bg-terracotta text-white text-center font-bold hover:bg-[#d47726] transition-colors shadow-md">Wybieram Pro</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Final CTA & Footer -->
+    <section id="cta" class="bg-bgWhite pt-32 pb-20 px-6 text-center relative overflow-hidden">
+        <div class="max-w-3xl mx-auto relative z-10">
+            <h2 class="text-5xl md:text-6xl font-serif font-bold text-darkBg mb-12">Przestań tracić klientów.</h2>
+            
+            <div class="relative inline-block group">
+                <div class="absolute -inset-4 bg-terracotta blur-2xl opacity-40 group-hover:opacity-60 transition-opacity rounded-full"></div>
+                <button class="relative bg-terracotta text-white text-xl font-bold px-12 py-6 rounded-full flex items-center justify-center gap-4 transition-transform group-hover:scale-105 shadow-xl border border-white/20">
+                    Wypróbuj w swoim biznesie
+                    <img src="Right Arrow.svg" alt="Arrow" class="w-6 h-6 invert">
+                </button>
+            </div>
+            <p class="mt-6 text-gray-500 font-medium">Bez podawania karty kredytowej. Konfiguracja w 24h.</p>
+        </div>
+    </section>
+
+    <footer class="bg-darkBg text-white/70 py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-white text-darkBg flex items-center justify-center font-serif font-bold text-sm">AI</div>
+                <span class="font-serif font-bold text-xl text-white tracking-tight">Call-t</span>
+            </div>
+            <div class="text-center md:text-left text-sm">
+                <p>📍 Kielce, Świętokrzyskie</p>
+                <p>📞 +48 500 600 700</p>
+            </div>
+            <div class="flex gap-6 text-sm">
+                <a href="#" class="hover:text-white transition-colors">Polityka Prywatności</a>
+                <a href="#" class="hover:text-white transition-colors">RODO</a>
+                <a href="#" class="hover:text-white transition-colors">Regulamin</a>
+            </div>
+        </div>
+        <div class="text-center mt-12 text-xs text-white/40 border-t border-white/10 pt-6">
+            &copy; 2026 Call-t. Wszelkie prawa zastrzeżone.
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // 1. Calculator Logic
+        const slider = document.getElementById('missedCalls');
+        const callsDisplay = document.getElementById('callsDisplay');
+        const lostMoneyDisplay = document.getElementById('lostMoney');
+        const multiplier = 150; // 150 zł per missed call
+
+        function updateCalculator() {
+            const val = parseInt(slider.value);
+            callsDisplay.textContent = val;
+            const money = val * multiplier * 4;
+            // Format number with space as thousand separator
+            lostMoneyDisplay.textContent = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        }
+        
+        slider.addEventListener('input', updateCalculator);
+        // Initialize
+        updateCalculator();
+
+
+        // 2. Tabs Logic
+        const tabBtns = document.querySelectorAll('.niche-tab');
+        const nicheText = document.getElementById('nicheText');
+        const tabIcons = document.querySelectorAll('.tab-icon');
+
+        const nicheData = {
+            auto: 'Mechanik pod autem <span class="font-bold text-terracotta">nie słyszy telefonu</span> — klient dzwoni do konkurencji.',
+            mistrzowie: 'Fryzjerka farbuje włosy i <span class="font-bold text-terracotta">nie może odebrać</span> — traci wizytę za 300 zł.',
+            ekipy: 'Brygadzista na rusztowaniu <span class="font-bold text-terracotta">ignoruje dzwonek</span> — przepada nowe zlecenie na remont.'
+        };
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Reset all tabs
+                tabBtns.forEach(t => {
+                    t.classList.remove('bg-terracotta', 'text-white', 'shadow-lg');
+                    t.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+                    t.querySelector('img').classList.remove('invert');
+                    t.querySelector('img').classList.add('opacity-60');
+                });
+
+                // Set active tab
+                btn.classList.add('bg-terracotta', 'text-white', 'shadow-lg');
+                btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+                btn.querySelector('img').classList.add('invert');
+                btn.querySelector('img').classList.remove('opacity-60');
+
+                // Update text with a fade effect
+                nicheText.style.opacity = 0;
+                setTimeout(() => {
+                    nicheText.innerHTML = nicheData[btn.dataset.tab];
+                    nicheText.style.opacity = 1;
+                }, 150);
+            });
+        });
+
+
+        // 3. Accordion Logic
+        const accordionBtns = document.querySelectorAll('.accordion-btn');
+
+        accordionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const parent = btn.parentElement;
+                const content = btn.nextElementSibling;
+                
+                // Toggle current
+                if (parent.classList.contains('open')) {
+                    parent.classList.remove('open');
+                    content.classList.remove('open');
+                } else {
+                    // Close others (optional, uncomment to close others when opening one)
+                    // document.querySelectorAll('.accordion-item').forEach(item => {
+                    //    item.classList.remove('open');
+                    //    item.querySelector('.accordion-content').classList.remove('open');
+                    // });
+                    
+                    parent.classList.add('open');
+                    content.classList.add('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

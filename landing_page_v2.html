@@ -1,0 +1,1675 @@
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Call-T | Asystent telefoniczny dla lokalnych firm</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Bitter:wght@400;600;700;900&family=JetBrains+Mono:wght@500&display=swap"
+			rel="stylesheet"
+		/>
+
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						colors: {
+							bgWhite: '#F5F1EA',
+							stone: '#E7E4DE',
+							terracotta: '#C9622E',
+							terracottaDeep: '#A8552E',
+							darkBg: '#22262B',
+						},
+						fontFamily: {
+							sans: ['Golos Text', 'sans-serif'],
+							serif: ['Bitter', 'serif'],
+							mono: ['JetBrains Mono', 'monospace'],
+						},
+					},
+				},
+			}
+		</script>
+
+		<style>
+			.accordion-content {
+				transition:
+					max-height 0.3s ease-in-out,
+					opacity 0.3s ease-in-out;
+				max-height: 0;
+				opacity: 0;
+				overflow: hidden;
+			}
+			.accordion-content.open {
+				max-height: 220px;
+				opacity: 1;
+			}
+			.icon-rotate {
+				transition: transform 0.25s ease;
+			}
+			.open .icon-rotate {
+				transform: rotate(45deg);
+			}
+			.wave-bar {
+				background: currentColor;
+				border-radius: 2px;
+			}
+		</style>
+	</head>
+	<body
+		class="font-sans text-darkBg bg-bgWhite antialiased selection:bg-terracotta selection:text-white overflow-x-hidden"
+	>
+		<!-- Header -->
+		<header
+			class="border-b border-terracotta/40 bg-bgWhite sticky top-0 z-50"
+		>
+			<div
+				class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between"
+			>
+				<div class="flex items-center gap-2">
+					<div
+						class="w-8 h-8 rounded-md bg-darkBg text-bgWhite flex items-center justify-center font-serif font-bold text-sm"
+					>
+						C
+					</div>
+					<span class="font-serif font-bold text-xl tracking-tight"
+						>Call-T</span
+					>
+				</div>
+				<nav
+					class="hidden md:flex items-center gap-8 text-sm font-medium text-darkBg/70"
+				>
+					<a
+						href="#how-it-works"
+						class="hover:text-terracotta transition-colors"
+						>Jak to działa</a
+					>
+					<a
+						href="#cennik"
+						class="hover:text-terracotta transition-colors"
+						>Cennik</a
+					>
+					<a
+						href="#faq"
+						class="hover:text-terracotta transition-colors"
+						>FAQ</a
+					>
+				</nav>
+				<a
+					href="#"
+					data-open-trial
+					class="bg-terracotta hover:bg-terracottaDeep text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-colors shadow-sm"
+				>
+					Wypróbuj
+				</a>
+			</div>
+		</header>
+
+		<!-- Hero -->
+		<section class="pt-20 pb-28 px-6 lg:px-8 max-w-7xl mx-auto">
+			<div class="grid lg:grid-cols-2 gap-16 items-center">
+				<div class="max-w-xl">
+					<div class="flex items-center gap-2 mb-6">
+						<span
+							class="w-2.5 h-2.5 bg-terracotta rounded-sm"
+						></span>
+						<span
+							class="font-mono text-xs tracking-widest uppercase text-terracottaDeep"
+							>Dla autoserwisów, fachowców i ekip</span
+						>
+					</div>
+					<h1
+						class="text-5xl lg:text-6xl font-serif font-bold leading-[1.1] mb-6 text-darkBg"
+					>
+						Telefon dzwoni.<br />
+						<span class="text-terracotta">Ręce zajęte.</span>
+					</h1>
+					<p class="text-lg text-darkBg/70 mb-9 leading-relaxed">
+						Nie odbierasz, bo jesteś pod autem albo na drabinie.
+						Asystent odbiera za Ciebie, zbiera zgłoszenie i
+						preferowany termin i od razu wysyła Ci SMS-a z danymi
+						klienta.
+					</p>
+					<div
+						class="flex flex-col sm:flex-row gap-5 items-start sm:items-center"
+					>
+						<a
+							href="#"
+							data-open-trial
+							class="group flex items-center justify-center gap-3 bg-terracotta hover:bg-terracottaDeep text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+						>
+							Wypróbuj teraz
+							<svg
+								class="w-5 h-5 transition-transform group-hover:translate-x-1"
+								viewBox="0 0 20 20"
+								fill="none"
+							>
+								<path
+									d="M4 10h12M11 5l5 5-5 5"
+									stroke="white"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</a>
+						<span class="text-sm text-darkBg/50 font-medium"
+							>Pierwsze 14 dni <b>za darmo</b></span
+						>
+					</div>
+				</div>
+
+				<div class="relative min-w-0">
+					<div
+						class="bg-white rounded-2xl shadow-xl border border-darkBg/5 p-5 sm:p-7 flex items-center gap-4 sm:gap-5"
+					>
+						<button
+							class="w-14 h-14 rounded-full bg-terracotta hover:bg-terracottaDeep flex items-center justify-center shrink-0 shadow-md transition-colors"
+						>
+							<svg
+								class="w-5 h-5 ml-0.5"
+								viewBox="0 0 20 20"
+								fill="white"
+							>
+								<path d="M6 4l10 6-10 6V4z" />
+							</svg>
+						</button>
+						<div class="flex-1 min-w-0 flex flex-col gap-3">
+							<div class="text-sm font-medium text-darkBg/60">
+								Posłuchaj, jak brzmi prawdziwa rozmowa
+							</div>
+							<div
+								class="flex items-end gap-[2px] sm:gap-[3px] h-10 text-terracotta overflow-hidden"
+							>
+								<span
+									class="wave-bar flex-1 min-w-[2px] h-[40%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[65%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[30%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[80%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[50%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[90%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[45%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[70%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[35%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[85%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[55%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[25%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[95%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[40%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[60%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[75%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[30%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[50%]"
+								></span>
+								<span
+									class="wave-bar flex-1 min-w-[2px] h-[40%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[65%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[30%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[80%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[50%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[90%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[45%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[70%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[35%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[85%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[55%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[25%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[95%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[40%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[60%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[75%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[30%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[50%]"
+								></span>
+								<span
+									class="wave-bar flex-1 min-w-[2px] h-[40%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[65%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[30%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[80%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[50%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[90%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[45%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[70%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[35%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[85%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[55%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[25%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[95%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[40%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[60%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[75%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[30%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[50%]"
+								></span>
+								<span
+									class="wave-bar flex-1 min-w-[2px] h-[40%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[65%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[30%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[80%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[50%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[90%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[45%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[70%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[35%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[85%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[55%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[25%]"
+								></span
+								><span
+									class="wave-bar flex-1 min-w-[2px] h-[95%]"
+								></span>
+							</div>
+						</div>
+					</div>
+					<!-- subtle depth element, no glow -->
+					<div
+						class="absolute -z-10 top-4 -right-4 w-full h-full border-2 border-darkBg/10 rounded-2xl"
+					></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Calculator -->
+		<section
+			class="relative z-20 px-6 -mt-10 mb-20 max-w-5xl mx-auto scroll-mt-16"
+		>
+			<div
+				class="bg-white rounded-2xl shadow-lg border border-darkBg/5 p-7 md:p-9"
+			>
+				<h2 class="text-2xl font-serif font-bold text-darkBg mb-6">
+					Ile pieniędzy tracicie?
+				</h2>
+				<div class="grid md:grid-cols-[1fr_auto_1fr] gap-8 items-start">
+					<div>
+						<p class="text-sm text-darkBg/60 mb-4">
+							Wybierz liczbę tygodniowo nieodebranych połączeń
+						</p>
+						<div
+							class="flex w-full max-w-sm border border-terracotta rounded-lg overflow-hidden mb-4"
+							id="callButtons"
+						>
+							<button
+								data-calls="3"
+								class="calc-btn flex-1 px-2 sm:px-6 py-2.5 font-medium text-sm sm:text-base text-terracotta transition-colors"
+							>
+								3
+							</button>
+							<button
+								data-calls="5"
+								class="calc-btn flex-1 px-2 sm:px-6 py-2.5 font-medium text-sm sm:text-base bg-terracotta text-white transition-colors border-x border-terracotta"
+							>
+								5
+							</button>
+							<button
+								data-calls="7"
+								class="calc-btn flex-1 px-2 sm:px-6 py-2.5 font-medium text-sm sm:text-base text-terracotta transition-colors"
+							>
+								7 i więcej
+							</button>
+						</div>
+						<div class="text-xs text-darkBg/40">
+							Dotyczy jednej placówki.
+						</div>
+					</div>
+					<div
+						class="hidden md:block w-px h-24 bg-terracotta/40"
+					></div>
+					<div>
+						<div
+							class="text-6xl tracking-tight font-serif font-bold text-terracottaDeep border-b-2 border-terracotta/50 inline-block pb-2 mb-2"
+						>
+							− <span id="lostMoney">3 000</span> zł
+						</div>
+						<div class="text-sm text-darkBg/70">
+							straconych <strong>co miesiąc</strong>
+						</div>
+						<div class="text-xs text-darkBg/40 mt-1">
+							Średnia wartość koszyka - 150 zł.
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- How it works -->
+		<section
+			id="how-it-works"
+			class="bg-darkBg text-bgWhite py-24 px-6 overflow-hidden scroll-mt-16"
+		>
+			<div class="max-w-5xl mx-auto">
+				<h2
+					class="text-2xl font-serif font-bold mb-16 text-center md:text-left"
+				>
+					Jak to działa?
+				</h2>
+				<div class="grid md:grid-cols-3 gap-0 relative" id="howItWorks">
+					<div
+						class="hidden md:block absolute top-10 left-[16%] right-[16%] h-px bg-bgWhite/15"
+					></div>
+					<div
+						class="hidden md:block absolute top-10 left-[16%] h-px bg-terracotta transition-[width] duration-[1400ms] ease-out"
+						id="howItWorksLine"
+						style="width: 0%"
+					></div>
+					<div
+						class="md:hidden absolute left-1/2 -translate-x-1/2 w-px bg-bgWhite/15"
+						id="howItWorksLineVBase"
+						style="top: 0; height: 0"
+					></div>
+					<div
+						class="md:hidden absolute left-1/2 -translate-x-1/2 w-px bg-black transition-[height] duration-[1400ms] ease-out"
+						id="howItWorksLineV"
+						style="top: 0; height: 0"
+					></div>
+
+					<div
+						class="how-step flex flex-col items-center text-center px-4 transition-all duration-500 ease-out opacity-0 translate-y-2 mb-10"
+						style="transition-delay: 0ms"
+					>
+						<div
+							class="w-20 h-20 bg-bgWhite rounded-2xl flex items-center justify-center mb-5 shadow-md relative z-10"
+						>
+							<svg
+								class="w-7 h-7 text-darkBg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									d="M16.5562 12.9062L16.1007 13.359C16.1007 13.359 15.0181 14.4355 12.0631 11.4972C9.10812 8.55901 10.1907 7.48257 10.1907 7.48257L10.4775 7.19738C11.1841 6.49484 11.2507 5.36691 10.6342 4.54348L9.37326 2.85908C8.61028 1.83992 7.13596 1.70529 6.26145 2.57483L4.69185 4.13552C4.25823 4.56668 3.96765 5.12559 4.00289 5.74561C4.09304 7.33182 4.81071 10.7447 8.81536 14.7266C13.0621 18.9492 17.0468 19.117 18.6763 18.9651C19.1917 18.9171 19.6399 18.6546 20.0011 18.2954L21.4217 16.883C22.3806 15.9295 22.1102 14.2949 20.8833 13.628L18.9728 12.5894C18.1672 12.1515 17.1858 12.2801 16.5562 12.9062Z"
+								/>
+							</svg>
+						</div>
+						<h3 class="font-semibold mb-1 z-10">Klient dzwoni</h3>
+					</div>
+
+					<div
+						class="how-step flex flex-col items-center text-center px-4 relative transition-all duration-500 ease-out opacity-0 translate-y-2 mb-10"
+						style="transition-delay: 450ms"
+					>
+						<div
+							class="w-20 h-20 bg-bgWhite rounded-2xl flex items-center justify-center mb-5 shadow-md relative z-10"
+						>
+							<svg
+								class="w-8 h-8 text-black"
+								viewBox="0 0 56 56"
+								fill="currentColor"
+							>
+								<path
+									d="M 1.6437 32.5493 L 8.3327 32.5493 C 8.9491 32.5493 9.5198 32.1840 9.6796 31.5220 L 10.3417 28.5770 L 13.5606 43.4845 C 13.8574 44.8543 16.0946 44.8543 16.3001 43.4617 L 19.0852 25.1526 L 22.3498 53.3924 C 22.5553 55.0818 24.9752 55.0589 25.1122 53.3924 L 28.1256 19.7192 L 31.1163 53.3696 C 31.2761 55.0818 33.6731 55.0818 33.8786 53.3696 L 37.1432 25.1526 L 39.9512 43.4845 C 40.1566 44.8771 42.3711 44.8771 42.6909 43.4845 L 45.8641 28.7596 L 46.5486 31.5220 C 46.7543 32.2753 47.2794 32.5493 47.8956 32.5493 L 54.3795 32.5493 C 55.2926 32.5493 56.0000 31.8416 56.0000 30.9512 C 56.0000 30.0609 55.2926 29.3304 54.3795 29.3304 L 48.9004 29.3304 L 47.0741 22.2533 C 46.6632 20.7237 44.6770 20.7237 44.3572 22.2533 L 41.5264 35.5856 L 38.3075 14.5598 C 38.0564 12.8933 35.7506 12.9390 35.5451 14.5827 L 32.6687 39.5351 L 29.5182 3.9214 C 29.3812 2.2092 26.8700 2.2092 26.7102 3.9214 L 23.5598 39.5351 L 20.6833 14.5827 C 20.5007 12.8933 18.1949 12.8933 17.9210 14.5598 L 14.7020 35.5856 L 11.8940 22.2533 C 11.5744 20.8379 9.5426 20.8379 9.1545 22.2533 L 7.3282 29.3304 L 1.6437 29.3304 C .7305 29.3304 0 30.0609 0 30.9512 C 0 31.8416 .7305 32.5493 1.6437 32.5493 Z"
+								/>
+							</svg>
+						</div>
+						<div class="text-sm font-bold text-terracotta mt-1">
+							15 sekund
+						</div>
+						<div class="text-xs text-bgWhite/50 mb-3">
+							bez odpowiedzi
+						</div>
+						<h3 class="font-semibold mb-1">
+							Bot odbiera i zbiera zgłoszenie i preferowany termin
+						</h3>
+					</div>
+
+					<div
+						class="how-step flex flex-col items-center text-center px-4 transition-all duration-500 ease-out opacity-0 translate-y-2"
+						style="transition-delay: 900ms"
+					>
+						<div
+							class="w-20 h-20 bg-bgWhite rounded-2xl flex items-center justify-center mb-5 shadow-md relative z-10"
+						>
+							<svg
+								class="w-7 h-7 text-darkBg"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+							>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M23 6V18C23 19.6523 21.6523 21 20 21H4C2.34772 21 1 19.6523 1 18V6C1 4.34315 2.34315 3 4 3H20C21.6569 3 23 4.34315 23 6ZM3.10658 5.55395C3.27196 5.22692 3.61204 5 4 5H20C20.388 5 20.728 5.22692 20.8934 5.55395L12 11.7793L3.10658 5.55395ZM3 7.92066L10.8531 13.4178C11.5417 13.8999 12.4583 13.8999 13.1469 13.4178L21 7.92066V18C21 18.5477 20.5477 19 20 19H4C3.45228 19 3 18.5477 3 18V7.92066Z"
+								/>
+							</svg>
+						</div>
+						<h3 class="font-semibold mb-1">
+							Administrator otrzymuje SMS
+						</h3>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Niches -->
+		<section class="bg-bgWhite py-24 px-6">
+			<div class="max-w-4xl mx-auto">
+				<h2 class="text-2xl font-serif font-bold text-darkBg mb-8">
+					Zobacz, jak to wygląda w Twojej branży
+				</h2>
+
+				<div
+					class="flex w-full sm:w-auto sm:inline-flex border border-terracotta rounded-lg overflow-hidden mb-8"
+					id="nicheTabs"
+				>
+					<button
+						data-tab="auto"
+						class="niche-tab flex-1 sm:flex-initial px-2 sm:px-6 py-3 font-medium text-sm sm:text-base bg-terracotta text-white transition-colors"
+					>
+						Autoserwisy
+					</button>
+					<button
+						data-tab="mistrzowie"
+						class="niche-tab flex-1 sm:flex-initial px-2 sm:px-6 py-3 font-medium text-sm sm:text-base text-terracotta transition-colors border-x border-terracotta"
+					>
+						Fachowcy
+					</button>
+					<button
+						data-tab="ekipy"
+						class="niche-tab flex-1 sm:flex-initial px-2 sm:px-6 py-3 font-medium text-sm sm:text-base text-terracotta transition-colors"
+					>
+						Ekipy
+					</button>
+				</div>
+
+				<div class="bg-stone rounded-2xl p-8 border border-darkBg/5">
+					<div class="flex items-center gap-4 mb-6">
+						<div
+							class="w-14 h-14 rounded-full bg-darkBg flex items-center justify-center shrink-0"
+							id="nicheIconWrap"
+						>
+							<svg
+								class="w-6 h-6 text-bgWhite"
+								viewBox="0 0 122.88 122.88"
+								fill="currentColor"
+								id="nicheIcon"
+							>
+								<path
+									d="M61.44,21.74c10.96,0,20.89,4.44,28.07,11.63c7.18,7.18,11.63,17.11,11.63,28.07c0,10.96-4.44,20.89-11.63,28.07 c-7.18,7.18-17.11,11.63-28.07,11.63c-10.96,0-20.89-4.44-28.07-11.63c-7.18-7.18-11.63-17.11-11.63-28.07 c0-10.96,4.44-20.89,11.63-28.07C40.55,26.19,50.48,21.74,61.44,21.74L61.44,21.74z M61.44,0c16.97,0,32.33,6.88,43.44,18 c11.12,11.12,18,26.48,18,43.44c0,16.97-6.88,32.33-18,43.44c-11.12,11.12-26.48,18-43.44,18c-16.97,0-32.33-6.88-43.44-18 C6.88,93.77,0,78.41,0,61.44C0,44.47,6.88,29.11,18,18C29.11,6.88,44.47,0,61.44,0L61.44,0z M93.47,29.41 c-8.2-8.2-19.52-13.27-32.03-13.27c-12.51,0-23.83,5.07-32.03,13.27c-8.2,8.2-13.27,19.52-13.27,32.03 c0,12.51,5.07,23.83,13.27,32.03c8.2,8.2,19.52,13.27,32.03,13.27c12.51,0,23.83-5.07,32.03-13.27c8.2-8.2,13.27-19.52,13.27-32.03 C106.74,48.93,101.67,37.61,93.47,29.41L93.47,29.41z M65.45,56.77c-1.02-1.02-2.43-1.65-4.01-1.65c-1.57,0-2.99,0.63-4.01,1.65 l-0.01,0.01c-1.02,1.02-1.65,2.43-1.65,4.01c0,1.57,0.63,2.99,1.65,4.01l0.01,0.01c1.02,1.02,2.43,1.65,4.01,1.65 c1.57,0,2.99-0.63,4.01-1.65l0.01-0.01c1.02-1.02,1.65-2.44,1.65-4.01C67.1,59.21,66.47,57.8,65.45,56.77L65.45,56.77L65.45,56.77z M65.06,50.79c1.47,0.54,2.8,1.39,3.89,2.48l0,0l0,0c0.37,0.37,0.72,0.77,1.03,1.2l0.1-0.03l21.02-5.63 c-1.63-3.83-3.98-7.28-6.88-10.17c-5.03-5.03-11.72-8.41-19.17-9.24v21.12C65.07,50.61,65.07,50.7,65.06,50.79L65.06,50.79z M72.04,61.63c-0.14,1.73-0.69,3.35-1.57,4.76c0.05,0.06,0.09,0.13,0.13,0.2l12.07,19.13c0.54-0.47,1.06-0.96,1.57-1.47 c5.83-5.83,9.44-13.9,9.44-22.8c0-1.87-0.16-3.7-0.47-5.49L72.04,61.63L72.04,61.63z M64.57,70.95c-0.99,0.31-2.04,0.47-3.13,0.47 c-0.98,0-1.93-0.13-2.84-0.38L46.82,90.19c4.39,2.24,9.36,3.5,14.62,3.5c5.46,0,10.6-1.36,15.11-3.75L64.57,70.95L64.57,70.95z M52.57,66.64c-0.92-1.38-1.52-2.99-1.7-4.71l-0.01,0l-21.09-6.6c-0.38,1.98-0.58,4.02-0.58,6.11c0,8.9,3.61,16.97,9.44,22.8 c0.63,0.63,1.29,1.24,1.98,1.82l11.8-19.19C52.47,66.8,52.52,66.72,52.57,66.64L52.57,66.64z M52.72,54.72 c0.36-0.51,0.76-1,1.21-1.44l0,0l0,0c1.05-1.04,2.31-1.87,3.71-2.41c-0.01-0.11-0.02-0.23-0.02-0.34v-21.1 c-7.38,0.87-14,4.23-18.98,9.22c-2.75,2.75-5.01,6-6.63,9.6L52.72,54.72L52.72,54.72z"
+								/>
+							</svg>
+						</div>
+						<p
+							id="nicheText"
+							class="text-lg font-serif text-darkBg leading-snug"
+						>
+							Mechanik ma ręce w oleju i
+							<span class="font-bold text-terracotta"
+								>nie może podnieść słuchawki</span
+							>
+							— klient dzwoni do serwisu obok.
+						</p>
+					</div>
+					<div
+						class="bg-white rounded-xl p-4 flex items-center gap-4 border border-darkBg/5"
+					>
+						<button
+							class="w-12 h-12 shrink-0 bg-terracotta hover:bg-terracottaDeep transition-colors rounded-lg flex items-center justify-center shadow-sm"
+						>
+							<svg
+								class="w-4 h-4 ml-0.5"
+								viewBox="0 0 20 20"
+								fill="white"
+							>
+								<path d="M6 4l10 6-10 6V4z" />
+							</svg>
+						</button>
+						<div
+							class="flex-1 flex items-end gap-[2px] sm:gap-[3px] h-9 text-terracotta overflow-hidden min-w-0"
+						>
+							<span
+								class="wave-bar flex-1 min-w-[2px] h-[35%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[60%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[25%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[75%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[45%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[85%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[40%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[65%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[30%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[80%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[50%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[20%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[90%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[35%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[55%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[70%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[25%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[45%]"
+							></span>
+							<span
+								class="wave-bar flex-1 min-w-[2px] h-[35%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[60%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[25%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[75%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[45%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[85%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[40%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[65%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[30%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[80%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[50%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[20%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[90%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[35%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[55%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[70%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[25%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[45%]"
+							></span>
+							<span
+								class="wave-bar flex-1 min-w-[2px] h-[35%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[60%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[25%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[75%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[45%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[85%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[40%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[65%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[30%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[80%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[50%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[20%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[90%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[35%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[55%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[70%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[25%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[45%]"
+							></span>
+							<span
+								class="wave-bar flex-1 min-w-[2px] h-[35%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[60%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[25%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[75%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[45%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[85%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[40%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[65%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[30%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[80%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[50%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[20%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[90%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[35%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[55%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[70%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[25%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[45%]"
+							></span>
+							<span
+								class="wave-bar flex-1 min-w-[2px] h-[35%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[60%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[25%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[75%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[45%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[85%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[40%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[65%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[30%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[80%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[50%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[20%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[90%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[35%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[55%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[70%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[25%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[45%]"
+							></span>
+							<span
+								class="wave-bar flex-1 min-w-[2px] h-[35%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[60%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[25%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[75%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[45%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[85%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[40%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[65%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[30%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[80%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[50%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[20%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[90%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[35%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[55%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[70%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[25%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[45%]"
+							></span>
+							<span
+								class="wave-bar flex-1 min-w-[2px] h-[35%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[60%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[25%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[75%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[45%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[85%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[40%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[65%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[30%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[80%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[50%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[20%]"
+							></span
+							><span
+								class="wave-bar flex-1 min-w-[2px] h-[90%]"
+							></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ -->
+		<section
+			id="faq"
+			class="py-24 pt-16 px-6 max-w-2xl mx-auto scroll-mt-16"
+		>
+			<h2 class="text-2xl font-serif font-bold text-darkBg mb-10">
+				To normalne, że Macie wątpliwości
+			</h2>
+			<div class="flex flex-col">
+				<div class="accordion-item border-b border-terracotta/40 open">
+					<button
+						class="accordion-btn w-full py-5 text-left font-medium text-lg flex items-center justify-between hover:text-terracotta transition-colors"
+					>
+						Czy to brzmi jak robot?
+						<span class="icon-rotate text-xl leading-none">+</span>
+					</button>
+					<div class="accordion-content open">
+						<p class="pb-5 text-darkBg/70">
+							Nie udajemy, że to człowiek — ale rozmawia
+							naturalnie i rozumie, o co pyta klient. Posłuchaj
+							nagrania wyżej i oceń samodzielnie.
+						</p>
+					</div>
+				</div>
+				<div class="accordion-item border-b border-terracotta/40">
+					<button
+						class="accordion-btn w-full py-5 text-left font-medium text-lg flex items-center justify-between hover:text-terracotta transition-colors"
+					>
+						Co jeśli bot nie będzie znał odpowiedzi?
+						<span class="icon-rotate text-xl leading-none">+</span>
+					</button>
+					<div class="accordion-content">
+						<p class="pb-5 text-darkBg/70">
+							Mówi klientowi, że to sprawdzi, i od razu wysyła Ci
+							SMS-a. Oddzwaniasz, gdy masz chwilę — klient nie
+							zostaje bez odpowiedzi.
+						</p>
+					</div>
+				</div>
+				<div class="accordion-item border-b border-terracotta/40">
+					<button
+						class="accordion-btn w-full py-5 text-left font-medium text-lg flex items-center justify-between hover:text-terracotta transition-colors"
+					>
+						Skąd bot wie, że jestem wolny?
+						<span class="icon-rotate text-xl leading-none">+</span>
+					</button>
+					<div class="accordion-content">
+						<p class="pb-5 text-darkBg/70">
+							Zna terminy, które sam przyjął, i dni wolne, które
+							ustawisz. Dzięki temu nie umówi dwóch klientów na tę
+							samą godzinę. Ostateczny termin zawsze potwierdzasz
+							Ty. Starych terminów bot pamięta w celach
+							bezpieczeństwa.
+						</p>
+					</div>
+				</div>
+				<div class="accordion-item border-b border-terracotta/40">
+					<button
+						class="accordion-btn w-full py-5 text-left font-medium text-lg flex items-center justify-between hover:text-terracotta transition-colors"
+					>
+						Czy mogę zrezygnować z usług, czy to kontrakt na rok?
+						<span class="icon-rotate text-xl leading-none">+</span>
+					</button>
+					<div class="accordion-content">
+						<p class="pb-5 text-darkBg/70">
+							Żadnych umów na czas określony. Rezygnujesz w
+							dowolnym momencie, bez kar i wypowiedzeń.
+						</p>
+					</div>
+				</div>
+				<div class="accordion-item border-b border-terracotta/40">
+					<button
+						class="accordion-btn w-full py-5 text-left font-medium text-lg flex items-center justify-between hover:text-terracotta transition-colors"
+					>
+						Czy muszę zmieniać numer telefonu lub sprzęt?
+						<span class="icon-rotate text-xl leading-none">+</span>
+					</button>
+					<div class="accordion-content">
+						<p class="pb-5 text-darkBg/70">
+							Nie. Ustawiamy przekierowanie na Twoim obecnym
+							numerze — bot odbiera tylko wtedy, gdy Ty nie
+							możesz.
+						</p>
+					</div>
+				</div>
+				<div class="accordion-item border-b border-terracotta/40">
+					<button
+						class="accordion-btn w-full py-5 text-left font-medium text-lg flex items-center justify-between hover:text-terracotta transition-colors"
+					>
+						Czy to jest zgodne z RODO?
+						<span class="icon-rotate text-xl leading-none">+</span>
+					</button>
+					<div class="accordion-content">
+						<p class="pb-5 text-darkBg/70">
+							Tak — dane klientów przetwarzamy zgodnie z RODO, a
+							umowę powierzenia przetwarzania danych podpisujemy z
+							każdym klientem.
+						</p>
+					</div>
+				</div>
+				<div class="accordion-item border-b border-terracotta/40">
+					<button
+						class="accordion-btn w-full py-5 text-left font-medium text-lg flex items-center justify-between hover:text-terracotta transition-colors"
+					>
+						Co, jeśli klient pilnie potrzebuje usługi?
+						<span class="icon-rotate text-xl leading-none">+</span>
+					</button>
+					<div class="accordion-content">
+						<p class="pb-5 text-darkBg/70">
+							Bot zbiera zgłoszenie i od razu wysyła Ci SMS-a z
+							numerem klienta — oddzwaniasz w kilka minut, a nie
+							po powrocie do warsztatu.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Pricing -->
+		<section id="cennik" class="bg-darkBg py-24 px-6 scroll-mt-16">
+			<div class="max-w-5xl mx-auto">
+				<h2
+					class="text-2xl font-serif font-bold text-center text-bgWhite mb-16"
+				>
+					Cennik
+				</h2>
+				<div class="grid md:grid-cols-1 gap-8 max-w-sm mx-auto">
+					<div
+						class="bg-bgWhite text-darkBg rounded-2xl p-9 shadow-lg flex flex-col justify-between"
+					>
+						<div>
+							<h3 class="text-xl font-bold mb-4">
+								Standardna cena
+							</h3>
+							<p class="text-darkBg/50 mb-6 text-sm">
+								Pierwsze 14 dni <b>za darmo</b>, dalej
+							</p>
+							<div class="text-4xl font-serif font-bold mb-7">
+								299
+								<span
+									class="text-base text-darkBg/40 font-sans font-normal"
+									>zł / msc</span
+								>
+							</div>
+							<ul
+								class="space-y-3 mb-9 text-darkBg/70 text-sm font-medium"
+							>
+								<li class="flex items-center gap-3">
+									<span class="text-terracotta font-bold"
+										>✓</span
+									>
+									Odbieranie, gdy Ty nie możesz
+								</li>
+								<li class="flex items-center gap-3">
+									<span class="text-terracotta font-bold"
+										>✓</span
+									>
+									Umawianie wizyt
+								</li>
+								<li class="flex items-center gap-3">
+									<span class="text-terracotta font-bold"
+										>✓</span
+									>
+									Powiadomienia SMS
+								</li>
+							</ul>
+						</div>
+						<a
+							href="#"
+							data-open-trial
+							class="block w-full py-3.5 rounded-lg bg-terracotta text-white text-center font-bold hover:bg-terracottaDeep transition-colors"
+							>Wypróbuj</a
+						>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Final CTA -->
+		<section id="cta" class="bg-bgWhite pt-24 pb-20 px-6 text-center">
+			<div class="max-w-2xl mx-auto">
+				<h2
+					class="text-4xl md:text-5xl font-serif font-bold text-darkBg mb-10"
+				>
+					Przestań tracić klientów.
+				</h2>
+				<button
+					type="button"
+					data-open-trial
+					class="bg-terracotta hover:bg-terracottaDeep text-white text-lg font-bold px-10 py-5 rounded-xl inline-flex items-center gap-3 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 px-3.5 md:px-8"
+				>
+					Wypróbuj w swoim biznesie
+					<svg class="w-5 h-5" viewBox="0 0 20 20" fill="none">
+						<path
+							d="M4 10h12M11 5l5 5-5 5"
+							stroke="white"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				</button>
+				<p class="mt-6 text-darkBg/50 font-medium text-sm">
+					Bez podawania karty kredytowej.
+				</p>
+			</div>
+		</section>
+
+		<footer class="bg-darkBg text-bgWhite/70 py-10 px-6">
+			<div
+				class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6"
+			>
+				<div class="flex items-center gap-2">
+					<div
+						class="w-8 h-8 rounded-md bg-bgWhite text-darkBg flex items-center justify-center font-serif font-bold text-sm"
+					>
+						C
+					</div>
+					<span class="font-serif font-bold text-xl text-bgWhite"
+						>Call-T</span
+					>
+				</div>
+				<div class="text-center md:text-left text-sm">
+					<p>Kielce, Świętokrzyskie</p>
+					<p>+48 888 571 698</p>
+				</div>
+				<div class="flex gap-6 text-sm">
+					<a href="#" class="hover:text-bgWhite transition-colors"
+						>Polityka Prywatności</a
+					>
+					<a href="#" class="hover:text-bgWhite transition-colors"
+						>RODO</a
+					>
+					<a href="#" class="hover:text-bgWhite transition-colors"
+						>Regulamin</a
+					>
+				</div>
+			</div>
+			<div
+				class="text-center mt-10 text-xs text-bgWhite/30 border-t border-bgWhite/10 pt-6"
+			>
+				&copy; 2026 Call-T.
+			</div>
+		</footer>
+
+		<!-- Trial modal -->
+		<div
+			id="trialModal"
+			class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="trialTitle"
+		>
+			<div
+				class="absolute inset-0 bg-darkBg/70 backdrop-blur-[2px] opacity-0 transition-opacity duration-200"
+				id="trialBackdrop"
+			></div>
+			<div
+				id="trialPanel"
+				class="relative w-full max-w-md max-h-full overflow-y-auto bg-bgWhite rounded-2xl shadow-2xl border border-darkBg/10 opacity-0 translate-y-3 transition-all duration-200"
+			>
+				<button
+					type="button"
+					id="trialClose"
+					aria-label="Zamknij"
+					class="absolute top-3 right-3 w-9 h-9 rounded-lg flex items-center justify-center text-darkBg/50 hover:text-darkBg hover:bg-darkBg/5 transition-colors"
+				>
+					<svg class="w-5 h-5" viewBox="0 0 20 20" fill="none">
+						<path
+							d="M5 5l10 10M15 5L5 15"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						/>
+					</svg>
+				</button>
+
+				<!-- Section 1: call -->
+				<div class="p-7 sm:p-8 pb-6">
+					<h2
+						id="trialTitle"
+						class="text-2xl font-serif font-bold text-darkBg mb-2 pr-8"
+					>
+						Wypróbuj Call-T
+					</h2>
+					<p class="text-sm text-darkBg/60 mb-5">
+						Najszybciej: zadzwoń i sprawdź, jak bot odbiera telefon.
+					</p>
+					<a
+						id="trialPhone"
+						href="tel:+48500600700"
+						class="flex items-center justify-center gap-3 w-full bg-terracotta hover:bg-terracottaDeep text-white px-6 py-4 rounded-xl font-semibold text-lg transition-colors shadow-md"
+					>
+						<svg
+							class="w-5 h-5"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+						>
+							<path
+								d="M16.5562 12.9062L16.1007 13.359C16.1007 13.359 15.0181 14.4355 12.0631 11.4972C9.10812 8.55901 10.1907 7.48257 10.1907 7.48257L10.4775 7.19738C11.1841 6.49484 11.2507 5.36691 10.6342 4.54348L9.37326 2.85908C8.61028 1.83992 7.13596 1.70529 6.26145 2.57483L4.69185 4.13552C4.25823 4.56668 3.96765 5.12559 4.00289 5.74561C4.09304 7.33182 4.81071 10.7447 8.81536 14.7266C13.0621 18.9492 17.0468 19.117 18.6763 18.9651C19.1917 18.9171 19.6399 18.6546 20.0011 18.2954L21.4217 16.883C22.3806 15.9295 22.1102 14.2949 20.8833 13.628L18.9728 12.5894C18.1672 12.1515 17.1858 12.2801 16.5562 12.9062Z"
+							/>
+						</svg>
+						+48 500 600 700
+					</a>
+				</div>
+
+				<div class="flex items-center gap-4 px-7 sm:px-8">
+					<div class="flex-1 h-px bg-terracotta/40"></div>
+					<span
+						class="font-mono text-xs tracking-widest uppercase text-darkBg/40"
+						>oraz</span
+					>
+					<div class="flex-1 h-px bg-terracotta/40"></div>
+				</div>
+
+				<!-- Section 2: form -->
+				<div class="p-7 sm:p-8 pt-6">
+					<form id="trialForm" novalidate>
+						<p class="text-sm text-darkBg/60 mb-5">
+							Zostaw dane, a oddzwonimy do Ciebie.
+						</p>
+						<div class="mb-4">
+							<label
+								for="trialBusiness"
+								class="block text-sm font-medium text-darkBg mb-1.5"
+							>
+								Nazwa firmy
+							</label>
+							<input
+								id="trialBusiness"
+								name="business"
+								type="text"
+								autocomplete="organization"
+								required
+								maxlength="100"
+								placeholder="np. Auto-Serwis Kowalski"
+								class="w-full px-4 py-3 rounded-lg bg-white border border-darkBg/15 text-darkBg placeholder:text-darkBg/35 focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/25 transition-colors"
+							/>
+						</div>
+						<div class="mb-2">
+							<label
+								for="trialPhoneInput"
+								class="block text-sm font-medium text-darkBg mb-1.5"
+							>
+								Numer telefonu
+							</label>
+
+							<div class="flex items-center">
+								<div
+									class="inline-block bg-white px-4 py-3 border border-darkBg/15 rounded-tl-lg rounded-bl-lg"
+								>
+									<p>+48</p>
+								</div>
+								<input
+									id="trialPhoneInput"
+									name="phone"
+									type="tel"
+									inputmode="tel"
+									autocomplete="tel"
+									required
+									maxlength="20"
+									placeholder="500 600 700"
+									class="w-full px-4 py-3 rounded-tr-lg rounded-br-lg bg-white border border-darkBg/15 text-darkBg placeholder:text-darkBg/35 focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/25 transition-colors"
+								/>
+							</div>
+						</div>
+						<p
+							id="trialError"
+							class="text-sm text-red-700 min-h-[1.25rem] mb-3"
+							role="alert"
+						></p>
+						<button
+							type="submit"
+							id="trialSubmit"
+							class="w-full py-3.5 rounded-lg bg-darkBg text-bgWhite font-bold hover:bg-darkBg/90 disabled:opacity-60 transition-colors"
+						>
+							Oddzwońcie do mnie
+						</button>
+						<p class="mt-3 text-xs text-darkBg/45 text-center">
+							Bez podawania karty kredytowej. Pierwsze 14 dni za
+							darmo.
+						</p>
+					</form>
+
+					<div
+						id="trialSuccess"
+						class="hidden text-center py-6"
+						role="status"
+					>
+						<div
+							class="w-14 h-14 mx-auto mb-4 rounded-full bg-terracotta/15 flex items-center justify-center"
+						>
+							<svg
+								class="w-7 h-7 text-terracotta"
+								viewBox="0 0 24 24"
+								fill="none"
+							>
+								<path
+									d="M5 12.5l4.5 4.5L19 7.5"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</div>
+						<h3 class="font-serif font-bold text-xl mb-2">
+							Dziękujemy!
+						</h3>
+						<p class="text-sm text-darkBg/60">
+							Oddzwonimy najszybciej, jak to możliwe.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			// Calculator
+			const multiplier = 150
+			const calcBtns = document.querySelectorAll('.calc-btn')
+			const lostMoney = document.getElementById('lostMoney')
+			calcBtns.forEach((btn) => {
+				btn.addEventListener('click', () => {
+					calcBtns.forEach((b) => {
+						b.classList.remove('bg-terracotta', 'text-white')
+						b.classList.add('text-terracotta')
+					})
+					btn.classList.add('bg-terracotta', 'text-white')
+					btn.classList.remove('text-terracotta')
+					const calls = parseInt(btn.dataset.calls)
+					const money = calls * multiplier * 4
+					lostMoney.textContent = money
+						.toString()
+						.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+				})
+			})
+
+			// Niches
+			const nicheData = {
+				auto: {
+					text: 'Mechanik ma ręce w oleju i <span class="font-bold text-terracotta">nie może podnieść słuchawki</span> — klient dzwoni do serwisu obok.',
+					viewBox: '0 0 122.88 122.88',
+					icon: '<path d="M61.44,21.74c10.96,0,20.89,4.44,28.07,11.63c7.18,7.18,11.63,17.11,11.63,28.07c0,10.96-4.44,20.89-11.63,28.07 c-7.18,7.18-17.11,11.63-28.07,11.63c-10.96,0-20.89-4.44-28.07-11.63c-7.18-7.18-11.63-17.11-11.63-28.07 c0-10.96,4.44-20.89,11.63-28.07C40.55,26.19,50.48,21.74,61.44,21.74L61.44,21.74z M61.44,0c16.97,0,32.33,6.88,43.44,18 c11.12,11.12,18,26.48,18,43.44c0,16.97-6.88,32.33-18,43.44c-11.12,11.12-26.48,18-43.44,18c-16.97,0-32.33-6.88-43.44-18 C6.88,93.77,0,78.41,0,61.44C0,44.47,6.88,29.11,18,18C29.11,6.88,44.47,0,61.44,0L61.44,0z M93.47,29.41 c-8.2-8.2-19.52-13.27-32.03-13.27c-12.51,0-23.83,5.07-32.03,13.27c-8.2,8.2-13.27,19.52-13.27,32.03 c0,12.51,5.07,23.83,13.27,32.03c8.2,8.2,19.52,13.27,32.03,13.27c12.51,0,23.83-5.07,32.03-13.27c8.2-8.2,13.27-19.52,13.27-32.03 C106.74,48.93,101.67,37.61,93.47,29.41L93.47,29.41z M65.45,56.77c-1.02-1.02-2.43-1.65-4.01-1.65c-1.57,0-2.99,0.63-4.01,1.65 l-0.01,0.01c-1.02,1.02-1.65,2.43-1.65,4.01c0,1.57,0.63,2.99,1.65,4.01l0.01,0.01c1.02,1.02,2.43,1.65,4.01,1.65 c1.57,0,2.99-0.63,4.01-1.65l0.01-0.01c1.02-1.02,1.65-2.44,1.65-4.01C67.1,59.21,66.47,57.8,65.45,56.77L65.45,56.77L65.45,56.77z M65.06,50.79c1.47,0.54,2.8,1.39,3.89,2.48l0,0l0,0c0.37,0.37,0.72,0.77,1.03,1.2l0.1-0.03l21.02-5.63 c-1.63-3.83-3.98-7.28-6.88-10.17c-5.03-5.03-11.72-8.41-19.17-9.24v21.12C65.07,50.61,65.07,50.7,65.06,50.79L65.06,50.79z M72.04,61.63c-0.14,1.73-0.69,3.35-1.57,4.76c0.05,0.06,0.09,0.13,0.13,0.2l12.07,19.13c0.54-0.47,1.06-0.96,1.57-1.47 c5.83-5.83,9.44-13.9,9.44-22.8c0-1.87-0.16-3.7-0.47-5.49L72.04,61.63L72.04,61.63z M64.57,70.95c-0.99,0.31-2.04,0.47-3.13,0.47 c-0.98,0-1.93-0.13-2.84-0.38L46.82,90.19c4.39,2.24,9.36,3.5,14.62,3.5c5.46,0,10.6-1.36,15.11-3.75L64.57,70.95L64.57,70.95z M52.57,66.64c-0.92-1.38-1.52-2.99-1.7-4.71l-0.01,0l-21.09-6.6c-0.38,1.98-0.58,4.02-0.58,6.11c0,8.9,3.61,16.97,9.44,22.8 c0.63,0.63,1.29,1.24,1.98,1.82l11.8-19.19C52.47,66.8,52.52,66.72,52.57,66.64L52.57,66.64z M52.72,54.72 c0.36-0.51,0.76-1,1.21-1.44l0,0l0,0c1.05-1.04,2.31-1.87,3.71-2.41c-0.01-0.11-0.02-0.23-0.02-0.34v-21.1 c-7.38,0.87-14,4.23-18.98,9.22c-2.75,2.75-5.01,6-6.63,9.6L52.72,54.72L52.72,54.72z"/>',
+				},
+				mistrzowie: {
+					text: 'Elektryk pod napięciem <span class="font-bold text-terracotta">nie odbiera telefonu</span> — klient myśli, że go zignorowano, i szuka kogoś innego. ',
+					viewBox: '0 0 512 512',
+					icon: '<path d="M104.426,139.813l83.563,83.781c14.344-13.766,26.781-25.703,36.109-34.672l-84.297-84.5l-10.313-45.719 L54.27,12.985L33.629,33.642L12.988,54.282l45.719,75.219L104.426,139.813z"/><path d="M358.363,276.298L481.926,399.47c22.781,22.766,22.781,59.688,0,82.469c-22.781,22.766-59.688,22.766-82.469,0 L275.895,358.767L358.363,276.298z"/><path d="M459.957,203.407c42.547-38.609,49.656-82.484,40.141-119.484c-0.281-2.938-0.984-5.406-3.547-7.25 l-8.563-7.016c-1.484-1.391-3.484-2.063-5.484-1.875c-2.016,0.203-3.844,1.234-5.031,2.875l-49.25,64.031 c-1.375,1.891-3.594,2.969-5.922,2.891l-17.875,1.313c-1.531-0.047-3.016-0.594-4.219-1.563l-34.531-29.266 c-1.406-1.141-2.328-2.766-2.563-4.563l-2.141-16.188c-0.25-1.781,0.203-3.594,1.266-5.063l46.109-62.641 c2.094-2.875,1.688-6.859-0.906-9.281l-11.188-8.75c-2.188-2.031-4.672-1.75-8.063-1.094 c-31.844,6.281-86.219,37.125-100.016,79.75c-12.156,37.516-7.922,63.969-7.922,63.969c0,21.141-6.953,41.516-15.5,50.063 L24.504,424.923c-0.469,0.422-0.922,0.859-1.375,1.313c-19.844,19.844-19.813,52.047-0.641,71.219s51.859,19.672,71.703-0.172 c0.922-0.922,1.813-1.875,2.641-2.859l231.672-250.438C357.004,218.61,413.426,245.642,459.957,203.407z"/>',
+				},
+				ekipy: {
+					text: 'Brygadzista zalewa fundamenty i <span class="font-bold text-terracotta">nikt nie słyszy dzwonka</span> — zlecenie trafia do konkurencji.',
+					viewBox: '0 0 32 32',
+					icon: '<path d="M29.7,23.3L28,21.6V20c0-3.3-1.3-6.2-3.5-8.5L23,18.2c-0.1,0.5-0.5,0.8-1,0.8c-0.1,0-0.1,0-0.2,0c-0.5-0.1-0.9-0.7-0.8-1.2 l2-8.9c0-0.3-0.2-0.7-0.5-0.8c-4-2-8.9-2-12.9,0C9.2,8.3,9,8.6,9,8.9l2,8.9c0.1,0.5-0.2,1.1-0.8,1.2c-0.1,0-0.1,0-0.2,0 c-0.5,0-0.9-0.3-1-0.8l-1.5-6.7C5.3,13.8,4,16.7,4,20v1.6l-1.7,1.7C2,23.6,1.9,24,2.1,24.4C2.2,24.8,2.6,25,3,25h26 c0.4,0,0.8-0.2,0.9-0.6C30.1,24,30,23.6,29.7,23.3z"/>',
+				},
+			}
+			document.querySelectorAll('.niche-tab').forEach((btn) => {
+				btn.addEventListener('click', () => {
+					document.querySelectorAll('.niche-tab').forEach((t) => {
+						t.classList.remove('bg-terracotta', 'text-white')
+						t.classList.add('text-terracotta')
+					})
+					btn.classList.add('bg-terracotta', 'text-white')
+					btn.classList.remove('text-terracotta')
+					const data = nicheData[btn.dataset.tab]
+					document.getElementById('nicheText').style.opacity = 0
+					setTimeout(() => {
+						document.getElementById('nicheText').innerHTML =
+							data.text
+						document
+							.getElementById('nicheIcon')
+							.setAttribute('viewBox', data.viewBox)
+						document.getElementById('nicheIcon').innerHTML =
+							data.icon
+						document.getElementById('nicheText').style.opacity = 1
+					}, 150)
+				})
+			})
+
+			// How it works — sequence animation
+			const howItWorksSection = document.getElementById('how-it-works')
+			if (howItWorksSection) {
+				const line = document.getElementById('howItWorksLine')
+				const lineVBase = document.getElementById('howItWorksLineVBase')
+				const lineV = document.getElementById('howItWorksLineV')
+				const container = document.getElementById('howItWorks')
+				const steps = howItWorksSection.querySelectorAll('.how-step')
+				let revealed = false
+
+				const layoutVerticalLine = () => {
+					if (window.innerWidth >= 768) return
+					const iconBoxes = Array.from(steps).map((step) =>
+						step.querySelector(':scope > div'),
+					)
+					const containerRect = container.getBoundingClientRect()
+					const firstRect = iconBoxes[0].getBoundingClientRect()
+					const lastRect =
+						iconBoxes[iconBoxes.length - 1].getBoundingClientRect()
+					const top =
+						firstRect.top - containerRect.top + firstRect.height / 2
+					const bottom =
+						lastRect.top - containerRect.top + lastRect.height / 2
+					lineVBase.style.top = top + 'px'
+					lineVBase.style.height = bottom - top + 'px'
+					lineV.style.top = top + 'px'
+					lineV.dataset.fullHeight = bottom - top + 'px'
+					lineV.style.height = revealed
+						? lineV.dataset.fullHeight
+						: '0px'
+				}
+
+				layoutVerticalLine()
+				window.addEventListener('resize', layoutVerticalLine)
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								revealed = true
+								line.style.width = '70%'
+								steps.forEach((step) => {
+									step.classList.remove(
+										'opacity-0',
+										'translate-y-2',
+									)
+								})
+								// re-measure once the reveal transition settles
+								// (translate-y removal shifts step positions)
+								setTimeout(layoutVerticalLine, 520)
+								if (lineV.dataset.fullHeight) {
+									lineV.style.height =
+										lineV.dataset.fullHeight
+								}
+								observer.disconnect()
+							}
+						})
+					},
+					{ threshold: 0.4 },
+				)
+				observer.observe(howItWorksSection)
+			}
+
+			// Trial modal
+			const trialModal = document.getElementById('trialModal')
+			const trialBackdrop = document.getElementById('trialBackdrop')
+			const trialPanel = document.getElementById('trialPanel')
+			const trialForm = document.getElementById('trialForm')
+			const trialSuccess = document.getElementById('trialSuccess')
+			const trialError = document.getElementById('trialError')
+			const trialSubmit = document.getElementById('trialSubmit')
+			const trialBusiness = document.getElementById('trialBusiness')
+			const trialPhoneInput = document.getElementById('trialPhoneInput')
+			let trialLastFocus = null
+
+			const openTrial = () => {
+				trialLastFocus = document.activeElement
+				trialForm.classList.remove('hidden')
+				trialSuccess.classList.add('hidden')
+				trialError.textContent = ''
+				trialModal.classList.remove('hidden')
+				trialModal.classList.add('flex')
+				document.body.style.overflow = 'hidden'
+				requestAnimationFrame(() => {
+					trialBackdrop.classList.remove('opacity-0')
+					trialPanel.classList.remove('opacity-0', 'translate-y-3')
+				})
+				setTimeout(
+					() => document.getElementById('trialPhone').focus(),
+					50,
+				)
+			}
+
+			const closeTrial = () => {
+				trialBackdrop.classList.add('opacity-0')
+				trialPanel.classList.add('opacity-0', 'translate-y-3')
+				document.body.style.overflow = ''
+				setTimeout(() => {
+					trialModal.classList.add('hidden')
+					trialModal.classList.remove('flex')
+				}, 200)
+				if (trialLastFocus) trialLastFocus.focus()
+			}
+
+			document.querySelectorAll('[data-open-trial]').forEach((el) => {
+				el.addEventListener('click', (e) => {
+					e.preventDefault()
+					openTrial()
+				})
+			})
+			document
+				.getElementById('trialClose')
+				.addEventListener('click', closeTrial)
+			trialBackdrop.addEventListener('click', closeTrial)
+			document.addEventListener('keydown', (e) => {
+				if (trialModal.classList.contains('hidden')) return
+				if (e.key === 'Escape') return closeTrial()
+				if (e.key === 'Tab') {
+					// keep focus inside the dialog
+					const f = trialPanel.querySelectorAll(
+						'a[href], button:not([disabled]), input:not([disabled])',
+					)
+					const visible = Array.from(f).filter(
+						(n) => n.offsetParent !== null,
+					)
+					if (!visible.length) return
+					const first = visible[0]
+					const last = visible[visible.length - 1]
+					if (e.shiftKey && document.activeElement === first) {
+						e.preventDefault()
+						last.focus()
+					} else if (!e.shiftKey && document.activeElement === last) {
+						e.preventDefault()
+						first.focus()
+					}
+				}
+			})
+
+			trialForm.addEventListener('submit', async (e) => {
+				e.preventDefault()
+				const business = trialBusiness.value.trim()
+				const phone = trialPhoneInput.value.trim()
+				const digits = phone.replace(/\D/g, '')
+				if (!business) {
+					trialError.textContent = 'Podaj nazwę firmy.'
+					return trialBusiness.focus()
+				}
+				if (!/^[+\d][\d\s\-()]*$/.test(phone) || digits.length !== 9) {
+					trialError.textContent =
+						'Podaj poprawny numer telefonu (9 cyfr).'
+					return trialPhoneInput.focus()
+				}
+				trialError.textContent = ''
+				trialSubmit.disabled = true
+				try {
+					// TODO: send to your backend / Formspree / Telegram bot.
+					// await fetch('https://YOUR-ENDPOINT', {
+					// 	method: 'POST',
+					// 	headers: { 'Content-Type': 'application/json' },
+					// 	body: JSON.stringify({ business, phone }),
+					// })
+					console.log('Trial request (stub):', { business, phone })
+					trialForm.classList.add('hidden')
+					trialSuccess.classList.remove('hidden')
+					trialForm.reset()
+				} catch (err) {
+					trialError.textContent =
+						'Coś poszło nie tak. Spróbuj ponownie lub zadzwoń.'
+				} finally {
+					trialSubmit.disabled = false
+				}
+			})
+
+			// Accordion
+			document.querySelectorAll('.accordion-btn').forEach((btn) => {
+				btn.addEventListener('click', () => {
+					const parent = btn.parentElement
+					const content = btn.nextElementSibling
+					const isOpen = parent.classList.contains('open')
+					parent.classList.toggle('open', !isOpen)
+					content.classList.toggle('open', !isOpen)
+				})
+			})
+		</script>
+	</body>
+</html>
