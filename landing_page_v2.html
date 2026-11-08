@@ -1145,13 +1145,16 @@
 							<p class="text-darkBg/50 mb-6 text-sm">
 								Pierwsze 14 dni <b>za darmo</b>, dalej
 							</p>
-							<div class="text-4xl font-serif font-bold mb-7">
+							<div class="text-4xl font-serif font-bold mb-1">
 								299
 								<span
 									class="text-base text-darkBg/40 font-sans font-normal"
 									>zł / msc</span
 								>
 							</div>
+							<p class="text-darkBg/50 mb-7 text-sm">
+								cena <b>nie zawiera VAT</b>
+							</p>
 							<ul
 								class="space-y-3 mb-9 text-darkBg/70 text-sm font-medium"
 							>
@@ -1232,7 +1235,7 @@
 				</div>
 				<div class="text-center md:text-left text-sm">
 					<p>Kielce, Świętokrzyskie</p>
-					<p>+48 888 571 698</p>
+					<p class="footer-phone cursor-pointer">+48 888 571 698</p>
 				</div>
 				<div class="flex gap-6 text-sm">
 					<a href="#" class="hover:text-bgWhite transition-colors"
@@ -1670,6 +1673,17 @@
 					content.classList.toggle('open', !isOpen)
 				})
 			})
+
+			// Footer phone number click copy
+			document
+				.querySelector('.footer-phone')
+				.addEventListener('click', (e) => {
+					e.preventDefault()
+					const number = e.target.textContent.trim()
+					navigator.clipboard.writeText(number).then(() => {
+						alert(`Skopiowano numer: ${number}`)
+					})
+				})
 		</script>
 	</body>
 </html>
