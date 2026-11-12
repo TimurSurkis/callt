@@ -12,11 +12,16 @@ Warsztaty samochodowe, wulkanizacje oraz niezależne serwisy mechaniczne w Polsc
 
 Stworzenie dedykowanego asystenta głosowego opartego na zaawansowanym AI (ElevenLabs Conversational AI + dedykowany backend Node.js), który:
 
-- Przejmuje połączenia przychodzące (szczególnie w trybie warunkowym: gdy linia jest zajęta, po 15 sekundach braku odpowiedzi lub po godzinach pracy).
+- Przejmuje połączenia przychodzące (szczególnie w trybie warunkowym: gdy linia jest zajęta, po 10 sekundach braku odpowiedzi lub po godzinach pracy).
 - Prowadzi w 100% naturalny, płynny dialog w języku polskim.
-- Błyskawicznie weryfikuje wolne sloty i zapisuje wizyty w Kalendarzu Google warsztatu.
+- Jeśli warsztat korzysta z Google Calendar, weryfikuje wolne sloty i zapisuje tam potwierdzone wizyty. Przy zapisach papierowych korzysta z wewnętrznego kalendarza cieniowego do kontroli i zapisu przyszłych rezerwacji, a szczegóły przekazuje mistrzowi przez SMS lub WhatsApp.
 - Obsługuje podstawowe pytania oraz weryfikację/odwołanie wizyty na podstawie numeru dzwoniącego (Caller ID).
-- Zapewnia natychmiastowe powiadomienia dla załogi warsztatu za pośrednictwem bota na Telegramie.
+- Wysyła powiadomienia do warsztatu przez SMS lub WhatsApp — kanał jest wybierany podczas wdrożenia zgodnie z preferencją klienta.
+
+### 1.3. Rynek docelowy
+
+- **Etap początkowy:** autoserwisy.
+- **Rozszerzenie:** po potwierdzeniu powodzenia projektu oferta może zostać rozszerzona na inne nisze lokalnych usług.
 
 ---
 
@@ -27,7 +32,7 @@ Stworzenie dedykowanego asystenta głosowego opartego na zaawansowanym AI (Eleve
        │
        ▼
 [Operator Telco / SIP Trunk (Twilio / Zadarma)]
-       │ (Przekierowanie warunkowe z telefonu warsztatu)
+       │ (Przekierowanie warunkowe: zajęta linia lub brak odpowiedzi przez 10 s)
        ▼
 [ElevenLabs Conversational AI]
    ├── STT (Transkrypcja mowy na tekst + słownik motoryzacyjny)
@@ -39,8 +44,8 @@ Stworzenie dedykowanego asystenta głosowego opartego na zaawansowanym AI (Eleve
    ├── Walidacja i normalizacja dat (resolveDate: "jutro", "w piątek" -> YYYY-MM-DD)
    ├── Obsługa Caller ID (autentykacja klienta po numerze telefonu)
    └── Integracja API
-       ├── Google Calendar API (Service Account: odczyt wolnych slotów / rezerwacja)
-       └── Telegram / WhatsApp / SMS notification
+       ├── Google Calendar API (kalendarz warsztatu lub kalendarz cieniowy dla zapisów papierowych)
+       └── SMS lub WhatsApp — preferowany kanał warsztatu
 ```
 
 ### 2.1. Komponenty Systemu
@@ -68,11 +73,11 @@ Stworzenie dedykowanego asystenta głosowego opartego na zaawansowanym AI (Eleve
 
 1. Klient dzwoni z zapytaniem o wymianę części/oleju.
 2. Asystent pyta o dogodny dzień i porę.
-3. Asystent wywołuje narzędzie `check_availability(date, time_range)`.
-4. Backend analizuje kalendarz i zwraca wolne sloty (domyślny bufor: 60 minut na auto).
+3. Asystent wywołuje `check_availability(date, time_range)`. Backend sprawdza kalendarz Google warsztatu albo wewnętrzny kalendarz cieniowy, jeśli warsztat prowadzi zapisy na papierze.
+4. Backend zwraca wolne sloty (domyślny bufor: 60 minut na auto), tak aby bot nie zaproponował terminu zajętego przez wcześniejszą rezerwację.
 5. Klient akceptuje godzinę, podaje markę pojazdu i usterkę.
 6. Asystent wywołuje `book_visit(date, time, client_name, car_info, problem)`.
-7. Wpis pojawia się w Kalendarzu Google; Telegram wysyła powiadomienie do majstra.
+7. Jeśli warsztat korzysta z Google Calendar, wizyta zostaje zapisana w jego kalendarzu. Przy zapisach papierowych wizyta trafia do kalendarza cieniowego, a mistrz otrzymuje szczegóły przez preferowany kanał: SMS lub WhatsApp, aby wpisać ją również do papierowego dziennika.
 
 ### UC-2: Odwołanie lub zmiana terminu
 
@@ -122,16 +127,16 @@ Stworzenie dedykowanego asystenta głosowego opartego na zaawansowanym AI (Eleve
 
 ### 5.1. Pakiety i Cennik
 
-- **Okres pilotażowy:** 14 dni roboczych po konfiguracji agenta w 100% za darmo.
-- **Model abonamentowy:** 350 – 490 PLN netto / miesiąc za punkt warsztatowy.
-    - Obejmuje nielimitowane odbieranie połączeń w trybie przekierowania, integrację z kalendarzem i powiadomienia Telegram.
+- **Pierwszych 5 klientów:** 14-dniowy bezpłatny pilotaż po konfiguracji; po pilotażu pierwszy płatny miesiąc kosztuje 550 PLN, a każdy kolejny 299 PLN / miesiąc.
+- **Pozostali klienci:** pierwszy płatny miesiąc kosztuje 650 PLN, a każdy kolejny 400 PLN / miesiąc.
+    - Abonament obejmuje odbieranie przekierowanych połączeń, zapis do Google Calendar (jeśli warsztat go używa) oraz powiadomienia SMS lub WhatsApp.
     - Koszty minutowe ElevenLabs / Twilio wliczane w ryczałt do określonego limitu (np. 150 minut miesięcznie).
 
 ### 5.2. Proces Onboardingu Warsztatu
 
-1. **Wdrożenie kalendarza:** Przeniesienie papierowego zeszytu na dedykowany Kalendarz Google na telefonie właściciela i majstrów (instalacja widżetów na ekranie głównym). - W przypadku sukcesu projektu.
+1. **Konfiguracja zapisów:** Jeśli warsztat korzysta z Google Calendar, podłączenie jego kalendarza. Jeśli zapisy są prowadzone na papierze, utworzenie kalendarza cieniowego i przeniesienie do niego wszystkich przyszłych rezerwacji. Warsztat musi też aktualizować kalendarz cieniowy o nowe terminy przyjęte poza botem. Należy również skonfigurować powiadomienia przez wybrany kanał: SMS lub WhatsApp.
 2. **Konfiguracja przekierowań:** Uruchomienie przekierowania warunkowego na karcie SIM telefonu warsztatowego:
-    - Kod sieciowy: `*61*NUMER_BOTA**15#` (przekierowanie po 15 sekundach braku odbioru).
+    - Kod sieciowy: `*61*NUMER_BOTA**10#` (przekierowanie po 10 sekundach braku odbioru).
     - Kod sieciowy: `*67*NUMER_BOTA#` (przekierowanie gdy linia jest zajęta).
 3. **Weryfikacja pilotażu:** Prezentacja raportu po 5 dniach (liczba uratowanych telefonów, lista zapisanych aut, wyliczona wartość zachowanych zleceń).
 4. **Finalizacja:** Podpisanie papierowej umowy abonamentowej ze zgodą opiekuna.
