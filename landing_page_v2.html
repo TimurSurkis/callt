@@ -54,8 +54,15 @@
 				transform: rotate(45deg);
 			}
 			.wave-bar {
-				background: currentColor;
+				background: #c9622e;
 				border-radius: 2px;
+				transition: background-color 0.12s linear;
+			}
+			.audio-waveform.has-started .wave-bar {
+				background: #fff;
+			}
+			.audio-waveform.has-started .wave-bar.is-played {
+				background: #c9622e;
 			}
 		</style>
 	</head>
@@ -164,229 +171,25 @@
 
 				<div class="relative min-w-0">
 					<div
-						class="bg-white rounded-2xl shadow-xl border border-darkBg/5 p-5 sm:p-7 flex items-center gap-4 sm:gap-5"
+						class="bg-white rounded-2xl shadow-xl border border-darkBg/5 p-5 sm:p-7"
 					>
-						<button
-							class="w-14 h-14 rounded-full bg-terracotta hover:bg-terracottaDeep flex items-center justify-center shrink-0 shadow-md transition-colors"
-						>
-							<svg
-								class="w-5 h-5 ml-0.5"
-								viewBox="0 0 20 20"
-								fill="white"
-							>
-								<path d="M6 4l10 6-10 6V4z" />
-							</svg>
-						</button>
-						<div class="flex-1 min-w-0 flex flex-col gap-3">
-							<div class="text-sm font-medium text-darkBg/60">
-								Posłuchaj, jak brzmi prawdziwa rozmowa
-							</div>
-							<div
-								class="flex items-end gap-[2px] sm:gap-[3px] h-10 text-terracotta overflow-hidden"
-							>
-								<span
-									class="wave-bar flex-1 min-w-[2px] h-[40%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[65%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[30%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[80%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[50%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[90%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[45%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[70%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[35%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[85%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[55%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[25%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[95%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[40%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[60%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[75%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[30%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[50%]"
-								></span>
-								<span
-									class="wave-bar flex-1 min-w-[2px] h-[40%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[65%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[30%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[80%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[50%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[90%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[45%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[70%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[35%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[85%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[55%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[25%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[95%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[40%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[60%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[75%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[30%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[50%]"
-								></span>
-								<span
-									class="wave-bar flex-1 min-w-[2px] h-[40%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[65%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[30%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[80%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[50%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[90%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[45%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[70%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[35%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[85%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[55%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[25%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[95%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[40%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[60%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[75%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[30%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[50%]"
-								></span>
-								<span
-									class="wave-bar flex-1 min-w-[2px] h-[40%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[65%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[30%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[80%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[50%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[90%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[45%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[70%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[35%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[85%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[55%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[25%]"
-								></span
-								><span
-									class="wave-bar flex-1 min-w-[2px] h-[95%]"
-								></span>
+						<p class="text-sm font-medium text-darkBg/60 mb-3">
+							Posłuchaj prawdziwej rozmowy z botem
+						</p>
+						<div class="audio-player flex items-center gap-4">
+							<button type="button" class="audio-play-button w-14 h-14 rounded-full bg-terracotta hover:bg-terracottaDeep flex items-center justify-center shrink-0 shadow-md transition-colors" aria-label="Odtwórz nagranie rozmowy">
+								<svg class="play-icon w-5 h-5 ml-0.5" viewBox="0 0 20 20" fill="white" aria-hidden="true"><path d="M6 4l10 6-10 6V4z" /></svg>
+								<svg class="pause-icon hidden w-5 h-5" viewBox="0 0 20 20" fill="white" aria-hidden="true"><path d="M5 4h4v12H5zM11 4h4v12h-4z" /></svg>
+							</button>
+							<div class="flex-1 min-w-0">
+								<div class="audio-waveform flex items-end gap-[2px] sm:gap-[3px] h-10 overflow-hidden" role="img" aria-label="Fala audio"></div>
+								<div class="audio-time text-xs text-darkBg/45 mt-2">0:00 / 0:00</div>
 							</div>
 						</div>
+						<audio class="sample-audio hidden" preload="metadata" aria-label="Nagranie rozmowy z botem autoserwisu">
+							<source src="audio/Autoserwis.wav" type="audio/wav" />
+							Twoja przeglądarka nie obsługuje odtwarzania audio.
+						</audio>
 					</div>
 					<!-- subtle depth element, no glow -->
 					<div
@@ -586,15 +389,9 @@
 					>
 						Fachowcy
 					</button>
-					<button
-						data-tab="ekipy"
-						class="niche-tab flex-1 sm:flex-initial px-2 sm:px-6 py-3 font-medium text-sm sm:text-base text-terracotta transition-colors"
-					>
-						Ekipy
-					</button>
 				</div>
 
-				<div class="bg-stone rounded-2xl p-8 border border-darkBg/5">
+				<div id="nicheContent" class="bg-stone rounded-2xl p-8 border border-darkBg/5 transition-all duration-300 ease-in-out">
 					<div class="flex items-center gap-4 mb-6">
 						<div
 							class="w-14 h-14 rounded-full bg-darkBg flex items-center justify-center shrink-0"
@@ -622,387 +419,24 @@
 							— klient dzwoni do serwisu obok.
 						</p>
 					</div>
-					<div
-						class="bg-white rounded-xl p-4 flex items-center gap-4 border border-darkBg/5"
-					>
-						<button
-							class="w-12 h-12 shrink-0 bg-terracotta hover:bg-terracottaDeep transition-colors rounded-lg flex items-center justify-center shadow-sm"
-						>
-							<svg
-								class="w-4 h-4 ml-0.5"
-								viewBox="0 0 20 20"
-								fill="white"
-							>
-								<path d="M6 4l10 6-10 6V4z" />
-							</svg>
-						</button>
-						<div
-							class="flex-1 flex items-end gap-[2px] sm:gap-[3px] h-9 text-terracotta overflow-hidden min-w-0"
-						>
-							<span
-								class="wave-bar flex-1 min-w-[2px] h-[35%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[60%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[25%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[75%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[45%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[85%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[40%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[65%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[30%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[80%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[50%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[20%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[90%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[35%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[55%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[70%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[25%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[45%]"
-							></span>
-							<span
-								class="wave-bar flex-1 min-w-[2px] h-[35%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[60%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[25%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[75%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[45%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[85%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[40%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[65%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[30%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[80%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[50%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[20%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[90%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[35%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[55%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[70%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[25%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[45%]"
-							></span>
-							<span
-								class="wave-bar flex-1 min-w-[2px] h-[35%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[60%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[25%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[75%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[45%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[85%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[40%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[65%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[30%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[80%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[50%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[20%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[90%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[35%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[55%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[70%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[25%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[45%]"
-							></span>
-							<span
-								class="wave-bar flex-1 min-w-[2px] h-[35%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[60%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[25%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[75%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[45%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[85%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[40%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[65%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[30%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[80%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[50%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[20%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[90%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[35%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[55%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[70%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[25%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[45%]"
-							></span>
-							<span
-								class="wave-bar flex-1 min-w-[2px] h-[35%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[60%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[25%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[75%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[45%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[85%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[40%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[65%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[30%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[80%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[50%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[20%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[90%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[35%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[55%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[70%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[25%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[45%]"
-							></span>
-							<span
-								class="wave-bar flex-1 min-w-[2px] h-[35%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[60%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[25%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[75%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[45%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[85%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[40%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[65%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[30%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[80%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[50%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[20%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[90%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[35%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[55%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[70%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[25%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[45%]"
-							></span>
-							<span
-								class="wave-bar flex-1 min-w-[2px] h-[35%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[60%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[25%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[75%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[45%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[85%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[40%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[65%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[30%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[80%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[50%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[20%]"
-							></span
-							><span
-								class="wave-bar flex-1 min-w-[2px] h-[90%]"
-							></span>
+					<div id="nicheAudioWrap" class="bg-white rounded-xl p-4 border border-darkBg/5">
+						<p id="nicheAudioTitle" class="text-sm font-medium text-darkBg/60 mb-3">
+							Przykładowa rozmowa z botem autoserwisu
+						</p>
+						<div class="audio-player flex items-center gap-4">
+							<button type="button" class="audio-play-button w-12 h-12 shrink-0 bg-terracotta hover:bg-terracottaDeep transition-colors rounded-lg flex items-center justify-center shadow-sm" aria-label="Odtwórz nagranie rozmowy">
+								<svg class="play-icon w-4 h-4 ml-0.5" viewBox="0 0 20 20" fill="white" aria-hidden="true"><path d="M6 4l10 6-10 6V4z" /></svg>
+								<svg class="pause-icon hidden w-4 h-4" viewBox="0 0 20 20" fill="white" aria-hidden="true"><path d="M5 4h4v12H5zM11 4h4v12h-4z" /></svg>
+							</button>
+							<div class="flex-1 min-w-0">
+								<div class="audio-waveform flex items-end gap-[2px] sm:gap-[3px] h-9 overflow-hidden" role="img" aria-label="Fala audio"></div>
+								<div class="audio-time text-xs text-darkBg/45 mt-2">0:00 / 0:00</div>
+							</div>
 						</div>
+						<audio class="sample-audio hidden" preload="metadata" aria-label="Nagranie rozmowy z botem autoserwisu">
+							<source src="audio/Autoserwis.wav" type="audio/wav" />
+							Twoja przeglądarka nie obsługuje odtwarzania audio.
+						</audio>
 					</div>
 				</div>
 			</div>
@@ -1140,7 +574,7 @@
 					>
 						<div>
 							<h3 class="text-xl font-bold mb-4">
-								Standardna cena
+								Pierwsi 5 klientów
 							</h3>
 							<p class="text-darkBg/50 mb-6 text-sm">
 								Pierwsze 14 dni <b>za darmo</b>, dalej
@@ -1450,6 +884,71 @@
 			})
 
 			// Niches
+			const formatAudioTime = (seconds) => {
+				if (!Number.isFinite(seconds)) return '0:00'
+				const minutes = Math.floor(seconds / 60)
+				const remainder = Math.floor(seconds % 60)
+				return `${minutes}:${remainder.toString().padStart(2, '0')}`
+			}
+			const audioPlayers = Array.from(
+				document.querySelectorAll('.audio-player'),
+			)
+			audioPlayers.forEach((player) => {
+				const audio = player.parentElement.querySelector('.sample-audio')
+				const button = player.querySelector('.audio-play-button')
+				const waveform = player.querySelector('.audio-waveform')
+				const time = player.querySelector('.audio-time')
+				const barsCount = 56
+
+				waveform.innerHTML = Array.from({ length: barsCount }, (_, index) => {
+					const height = 20 + Math.round(
+						(Math.sin(index * 1.71) + Math.sin(index * 0.43) + 2) * 19,
+					)
+					return `<span class="wave-bar flex-1 min-w-[2px]" style="height: ${height}%"></span>`
+				}).join('')
+
+				const updateTime = () => {
+					time.textContent = `${formatAudioTime(audio.currentTime)} / ${formatAudioTime(audio.duration)}`
+				}
+				const updateWaveform = () => {
+					const progress = audio.duration ? audio.currentTime / audio.duration : 0
+					const playedBars = Math.floor(progress * barsCount)
+					waveform.querySelectorAll('.wave-bar').forEach((bar, index) => {
+						bar.classList.toggle('is-played', index < playedBars)
+					})
+				}
+				const updateButton = (isPlaying) => {
+					button.querySelector('.play-icon').classList.toggle('hidden', isPlaying)
+					button.querySelector('.pause-icon').classList.toggle('hidden', !isPlaying)
+					button.setAttribute('aria-label', isPlaying ? 'Wstrzymaj nagranie rozmowy' : 'Odtwórz nagranie rozmowy')
+				}
+
+				button.addEventListener('click', () => {
+					if (audio.paused) {
+						audioPlayers.forEach((otherPlayer) => {
+							const otherAudio = otherPlayer.parentElement.querySelector('.sample-audio')
+							if (otherAudio !== audio) otherAudio.pause()
+						})
+						audio.play().catch(() => updateButton(false))
+					} else {
+						audio.pause()
+					}
+				})
+				audio.addEventListener('play', () => {
+					waveform.classList.add('has-started')
+					updateButton(true)
+				})
+				audio.addEventListener('pause', () => updateButton(false))
+				audio.addEventListener('timeupdate', () => {
+					updateTime()
+					updateWaveform()
+				})
+				audio.addEventListener('loadedmetadata', updateTime)
+				audio.addEventListener('ended', () => {
+					updateButton(false)
+					updateWaveform()
+				})
+			})
 			const nicheData = {
 				auto: {
 					text: 'Mechanik ma ręce w oleju i <span class="font-bold text-terracotta">nie może podnieść słuchawki</span> — klient dzwoni do serwisu obok.',
@@ -1461,12 +960,20 @@
 					viewBox: '0 0 512 512',
 					icon: '<path d="M104.426,139.813l83.563,83.781c14.344-13.766,26.781-25.703,36.109-34.672l-84.297-84.5l-10.313-45.719 L54.27,12.985L33.629,33.642L12.988,54.282l45.719,75.219L104.426,139.813z"/><path d="M358.363,276.298L481.926,399.47c22.781,22.766,22.781,59.688,0,82.469c-22.781,22.766-59.688,22.766-82.469,0 L275.895,358.767L358.363,276.298z"/><path d="M459.957,203.407c42.547-38.609,49.656-82.484,40.141-119.484c-0.281-2.938-0.984-5.406-3.547-7.25 l-8.563-7.016c-1.484-1.391-3.484-2.063-5.484-1.875c-2.016,0.203-3.844,1.234-5.031,2.875l-49.25,64.031 c-1.375,1.891-3.594,2.969-5.922,2.891l-17.875,1.313c-1.531-0.047-3.016-0.594-4.219-1.563l-34.531-29.266 c-1.406-1.141-2.328-2.766-2.563-4.563l-2.141-16.188c-0.25-1.781,0.203-3.594,1.266-5.063l46.109-62.641 c2.094-2.875,1.688-6.859-0.906-9.281l-11.188-8.75c-2.188-2.031-4.672-1.75-8.063-1.094 c-31.844,6.281-86.219,37.125-100.016,79.75c-12.156,37.516-7.922,63.969-7.922,63.969c0,21.141-6.953,41.516-15.5,50.063 L24.504,424.923c-0.469,0.422-0.922,0.859-1.375,1.313c-19.844,19.844-19.813,52.047-0.641,71.219s51.859,19.672,71.703-0.172 c0.922-0.922,1.813-1.875,2.641-2.859l231.672-250.438C357.004,218.61,413.426,245.642,459.957,203.407z"/>',
 				},
-				ekipy: {
-					text: 'Brygadzista zalewa fundamenty i <span class="font-bold text-terracotta">nikt nie słyszy dzwonka</span> — zlecenie trafia do konkurencji.',
-					viewBox: '0 0 32 32',
-					icon: '<path d="M29.7,23.3L28,21.6V20c0-3.3-1.3-6.2-3.5-8.5L23,18.2c-0.1,0.5-0.5,0.8-1,0.8c-0.1,0-0.1,0-0.2,0c-0.5-0.1-0.9-0.7-0.8-1.2 l2-8.9c0-0.3-0.2-0.7-0.5-0.8c-4-2-8.9-2-12.9,0C9.2,8.3,9,8.6,9,8.9l2,8.9c0.1,0.5-0.2,1.1-0.8,1.2c-0.1,0-0.1,0-0.2,0 c-0.5,0-0.9-0.3-1-0.8l-1.5-6.7C5.3,13.8,4,16.7,4,20v1.6l-1.7,1.7C2,23.6,1.9,24,2.1,24.4C2.2,24.8,2.6,25,3,25h26 c0.4,0,0.8-0.2,0.9-0.6C30.1,24,30,23.6,29.7,23.3z"/>',
+			}
+			const nicheAudioData = {
+				auto: {
+					src: 'audio/Autoserwis.wav',
+					title: 'Przykładowa rozmowa z botem autoserwisu',
+					label: 'Nagranie rozmowy z botem autoserwisu',
+				},
+				mistrzowie: {
+					src: 'audio/Elektryk.wav',
+					title: 'Przykładowa rozmowa z elektrykiem',
+					label: 'Nagranie rozmowy z botem elektryka',
 				},
 			}
+			let nicheTransitionTimeout
 			document.querySelectorAll('.niche-tab').forEach((btn) => {
 				btn.addEventListener('click', () => {
 					document.querySelectorAll('.niche-tab').forEach((t) => {
@@ -1475,18 +982,34 @@
 					})
 					btn.classList.add('bg-terracotta', 'text-white')
 					btn.classList.remove('text-terracotta')
-					const data = nicheData[btn.dataset.tab]
-					document.getElementById('nicheText').style.opacity = 0
-					setTimeout(() => {
-						document.getElementById('nicheText').innerHTML =
-							data.text
+					const nicheContent = document.getElementById('nicheContent')
+					nicheContent.classList.add('opacity-0', 'translate-y-2')
+					clearTimeout(nicheTransitionTimeout)
+					nicheTransitionTimeout = setTimeout(() => {
+						const data = nicheData[btn.dataset.tab]
+						const audioData = nicheAudioData[btn.dataset.tab]
+						const nicheAudioWrap = document.getElementById('nicheAudioWrap')
+						const nicheAudio = nicheAudioWrap.querySelector('audio')
+						nicheAudio.pause()
+						nicheAudio.querySelector('source').src = audioData.src
+						nicheAudio.setAttribute('aria-label', audioData.label)
+						nicheAudio.load()
+						nicheAudioWrap.querySelector('#nicheAudioTitle').textContent = audioData.title
+						const nicheWaveform = nicheAudioWrap.querySelector('.audio-waveform')
+						nicheWaveform.classList.remove('has-started')
+						nicheWaveform.querySelectorAll('.wave-bar').forEach((bar) => {
+							bar.classList.remove('is-played')
+						})
+						nicheAudioWrap.querySelector('.audio-time').textContent = '0:00 / 0:00'
+						document.getElementById('nicheText').innerHTML = data.text
 						document
 							.getElementById('nicheIcon')
 							.setAttribute('viewBox', data.viewBox)
-						document.getElementById('nicheIcon').innerHTML =
-							data.icon
-						document.getElementById('nicheText').style.opacity = 1
-					}, 150)
+						document.getElementById('nicheIcon').innerHTML = data.icon
+						requestAnimationFrame(() => {
+							nicheContent.classList.remove('opacity-0', 'translate-y-2')
+						})
+					}, 180)
 				})
 			})
 
