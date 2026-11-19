@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Call-T | Asystent telefoniczny dla lokalnych firm</title>
+		<title>Gloso | Asystent telefoniczny dla lokalnych firm</title>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,14 +37,13 @@
 		<style>
 			.accordion-content {
 				transition:
-					max-height 0.3s ease-in-out,
+					height 0.3s ease-in-out,
 					opacity 0.3s ease-in-out;
-				max-height: 0;
+				height: 0;
 				opacity: 0;
 				overflow: hidden;
 			}
 			.accordion-content.open {
-				max-height: 220px;
 				opacity: 1;
 			}
 			.icon-rotate {
@@ -83,7 +82,7 @@
 						C
 					</div>
 					<span class="font-serif font-bold text-xl tracking-tight"
-						>Call-T</span
+						>Gloso</span
 					>
 				</div>
 				<nav
@@ -125,7 +124,7 @@
 						></span>
 						<span
 							class="font-mono text-xs tracking-widest uppercase text-terracottaDeep"
-							>Dla autoserwisów, fachowców i ekip</span
+							>Dla lokalnych firm usługowych</span
 						>
 					</div>
 					<h1
@@ -135,10 +134,12 @@
 						<span class="text-terracotta">Ręce zajęte.</span>
 					</h1>
 					<p class="text-lg text-darkBg/70 mb-9 leading-relaxed">
-						Nie odbierasz, bo jesteś pod autem albo na drabinie.
-						Asystent odbiera za Ciebie, zbiera zgłoszenie i
-						preferowany termin i od razu wysyła Ci SMS-a z danymi
-						klienta.
+						Nie odbierasz, bo masz zajęte ręce? Po 10 sekundach
+						asystent odbierze telefon, zbierze zgłoszenie i
+						preferowany termin, a Tobie wyśle SMS. Z
+						podłączonym Google Calendar sprawdzi dostępność i zapisze
+						wizytę. Bez kalendarza przekaże zgłoszenie — termin
+						potwierdzisz osobiście.
 					</p>
 					<div
 						class="flex flex-col sm:flex-row gap-5 items-start sm:items-center"
@@ -146,11 +147,11 @@
 						<a
 							href="#"
 							data-open-trial
-							class="group flex items-center justify-center gap-3 bg-terracotta hover:bg-terracottaDeep text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+							class="group flex shrink-0 items-center justify-center gap-3 whitespace-nowrap bg-terracotta hover:bg-terracottaDeep text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
 						>
 							Wypróbuj teraz
 							<svg
-								class="w-5 h-5 transition-transform group-hover:translate-x-1"
+								class="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1"
 								viewBox="0 0 20 20"
 								fill="none"
 							>
@@ -164,7 +165,8 @@
 							</svg>
 						</a>
 						<span class="text-sm text-darkBg/50 font-medium"
-							>Pierwsze 14 dni <b>za darmo</b></span
+							>14 dni bezpłatnego pilotażu dla pierwszych 5
+							firm</span
 						>
 					</div>
 				</div>
@@ -177,17 +179,50 @@
 							Posłuchaj prawdziwej rozmowy z botem
 						</p>
 						<div class="audio-player flex items-center gap-4">
-							<button type="button" class="audio-play-button w-14 h-14 rounded-full bg-terracotta hover:bg-terracottaDeep flex items-center justify-center shrink-0 shadow-md transition-colors" aria-label="Odtwórz nagranie rozmowy">
-								<svg class="play-icon w-5 h-5 ml-0.5" viewBox="0 0 20 20" fill="white" aria-hidden="true"><path d="M6 4l10 6-10 6V4z" /></svg>
-								<svg class="pause-icon hidden w-5 h-5" viewBox="0 0 20 20" fill="white" aria-hidden="true"><path d="M5 4h4v12H5zM11 4h4v12h-4z" /></svg>
+							<button
+								type="button"
+								class="audio-play-button w-14 h-14 rounded-full bg-terracotta hover:bg-terracottaDeep flex items-center justify-center shrink-0 shadow-md transition-colors"
+								aria-label="Odtwórz nagranie rozmowy"
+							>
+								<svg
+									class="play-icon w-5 h-5 ml-0.5"
+									viewBox="0 0 20 20"
+									fill="white"
+									aria-hidden="true"
+								>
+									<path d="M6 4l10 6-10 6V4z" />
+								</svg>
+								<svg
+									class="pause-icon hidden w-5 h-5"
+									viewBox="0 0 20 20"
+									fill="white"
+									aria-hidden="true"
+								>
+									<path d="M5 4h4v12H5zM11 4h4v12h-4z" />
+								</svg>
 							</button>
 							<div class="flex-1 min-w-0">
-								<div class="audio-waveform flex items-end gap-[2px] sm:gap-[3px] h-10 overflow-hidden" role="img" aria-label="Fala audio"></div>
-								<div class="audio-time text-xs text-darkBg/45 mt-2">0:00 / 0:00</div>
+								<div
+									class="audio-waveform flex items-end gap-[2px] sm:gap-[3px] h-10 overflow-hidden"
+									role="img"
+									aria-label="Fala audio"
+								></div>
+								<div
+									class="audio-time text-xs text-darkBg/45 mt-2"
+								>
+									0:00 / 0:00
+								</div>
 							</div>
 						</div>
-						<audio class="sample-audio hidden" preload="metadata" aria-label="Nagranie rozmowy z botem autoserwisu">
-							<source src="audio/Autoserwis.wav" type="audio/wav" />
+						<audio
+							class="sample-audio hidden"
+							preload="metadata"
+							aria-label="Nagranie rozmowy z botem autoserwisu"
+						>
+							<source
+								src="audio/Autoserwis.wav"
+								type="audio/wav"
+							/>
 							Twoja przeglądarka nie obsługuje odtwarzania audio.
 						</audio>
 					</div>
@@ -248,7 +283,7 @@
 						<div
 							class="text-6xl tracking-tight font-serif font-bold text-terracottaDeep border-b-2 border-terracotta/50 inline-block pb-2 mb-2"
 						>
-							− <span id="lostMoney">3 000</span> zł
+							− <span id="lostMoney">3 000 zł</span>
 						</div>
 						<div class="text-sm text-darkBg/70">
 							straconych <strong>co miesiąc</strong>
@@ -329,13 +364,13 @@
 							</svg>
 						</div>
 						<div class="text-sm font-bold text-terracotta mt-1">
-							15 sekund
+							10 sekund
 						</div>
 						<div class="text-xs text-bgWhite/50 mb-3">
 							bez odpowiedzi
 						</div>
 						<h3 class="font-semibold mb-1">
-							Bot odbiera i zbiera zgłoszenie i preferowany termin
+							Bot odbiera, zbiera zgłoszenie i preferowany termin
 						</h3>
 					</div>
 
@@ -359,7 +394,7 @@
 							</svg>
 						</div>
 						<h3 class="font-semibold mb-1">
-							Administrator otrzymuje SMS
+							Właściciel otrzymuje SMS lub e-mail
 						</h3>
 					</div>
 				</div>
@@ -374,24 +409,32 @@
 				</h2>
 
 				<div
-					class="flex w-full sm:w-auto sm:inline-flex border border-terracotta rounded-lg overflow-hidden mb-8"
 					id="nicheTabs"
+					class="flex w-full sm:w-auto sm:inline-flex border border-terracotta rounded-lg overflow-hidden mb-8"
+					aria-label="Wybierz branżę"
 				>
 					<button
+						type="button"
 						data-tab="auto"
+						aria-pressed="true"
 						class="niche-tab flex-1 sm:flex-initial px-2 sm:px-6 py-3 font-medium text-sm sm:text-base bg-terracotta text-white transition-colors"
 					>
 						Autoserwisy
 					</button>
 					<button
+						type="button"
 						data-tab="mistrzowie"
-						class="niche-tab flex-1 sm:flex-initial px-2 sm:px-6 py-3 font-medium text-sm sm:text-base text-terracotta transition-colors border-x border-terracotta"
+						aria-pressed="false"
+						class="niche-tab flex-1 sm:flex-initial px-2 sm:px-6 py-3 font-medium text-sm sm:text-base text-terracotta border-l border-terracotta transition-colors"
 					>
 						Fachowcy
 					</button>
 				</div>
 
-				<div id="nicheContent" class="bg-stone rounded-2xl p-8 border border-darkBg/5 transition-all duration-300 ease-in-out">
+				<div
+					id="nicheContent"
+					class="bg-stone rounded-2xl p-8 border border-darkBg/5 transition-all duration-300 ease-in-out"
+				>
 					<div class="flex items-center gap-4 mb-6">
 						<div
 							class="w-14 h-14 rounded-full bg-darkBg flex items-center justify-center shrink-0"
@@ -419,22 +462,61 @@
 							— klient dzwoni do serwisu obok.
 						</p>
 					</div>
-					<div id="nicheAudioWrap" class="bg-white rounded-xl p-4 border border-darkBg/5">
-						<p id="nicheAudioTitle" class="text-sm font-medium text-darkBg/60 mb-3">
+					<div
+						id="nicheAudioWrap"
+						class="bg-white rounded-xl p-4 border border-darkBg/5"
+					>
+						<p
+							id="nicheAudioTitle"
+							class="text-sm font-medium text-darkBg/60 mb-3"
+						>
 							Przykładowa rozmowa z botem autoserwisu
 						</p>
 						<div class="audio-player flex items-center gap-4">
-							<button type="button" class="audio-play-button w-12 h-12 shrink-0 bg-terracotta hover:bg-terracottaDeep transition-colors rounded-lg flex items-center justify-center shadow-sm" aria-label="Odtwórz nagranie rozmowy">
-								<svg class="play-icon w-4 h-4 ml-0.5" viewBox="0 0 20 20" fill="white" aria-hidden="true"><path d="M6 4l10 6-10 6V4z" /></svg>
-								<svg class="pause-icon hidden w-4 h-4" viewBox="0 0 20 20" fill="white" aria-hidden="true"><path d="M5 4h4v12H5zM11 4h4v12h-4z" /></svg>
+							<button
+								type="button"
+								class="audio-play-button w-12 h-12 shrink-0 bg-terracotta hover:bg-terracottaDeep transition-colors rounded-lg flex items-center justify-center shadow-sm"
+								aria-label="Odtwórz nagranie rozmowy"
+							>
+								<svg
+									class="play-icon w-4 h-4 ml-0.5"
+									viewBox="0 0 20 20"
+									fill="white"
+									aria-hidden="true"
+								>
+									<path d="M6 4l10 6-10 6V4z" />
+								</svg>
+								<svg
+									class="pause-icon hidden w-4 h-4"
+									viewBox="0 0 20 20"
+									fill="white"
+									aria-hidden="true"
+								>
+									<path d="M5 4h4v12H5zM11 4h4v12h-4z" />
+								</svg>
 							</button>
 							<div class="flex-1 min-w-0">
-								<div class="audio-waveform flex items-end gap-[2px] sm:gap-[3px] h-9 overflow-hidden" role="img" aria-label="Fala audio"></div>
-								<div class="audio-time text-xs text-darkBg/45 mt-2">0:00 / 0:00</div>
+								<div
+									class="audio-waveform flex items-end gap-[2px] sm:gap-[3px] h-9 overflow-hidden"
+									role="img"
+									aria-label="Fala audio"
+								></div>
+								<div
+									class="audio-time text-xs text-darkBg/45 mt-2"
+								>
+									0:00 / 0:00
+								</div>
 							</div>
 						</div>
-						<audio class="sample-audio hidden" preload="metadata" aria-label="Nagranie rozmowy z botem autoserwisu">
-							<source src="audio/Autoserwis.wav" type="audio/wav" />
+						<audio
+							class="sample-audio hidden"
+							preload="metadata"
+							aria-label="Nagranie rozmowy z botem autoserwisu"
+						>
+							<source
+								src="audio/Autoserwis.wav"
+								type="audio/wav"
+							/>
 							Twoja przeglądarka nie obsługuje odtwarzania audio.
 						</audio>
 					</div>
@@ -476,8 +558,8 @@
 					<div class="accordion-content">
 						<p class="pb-5 text-darkBg/70">
 							Mówi klientowi, że to sprawdzi, i od razu wysyła Ci
-							SMS-a. Oddzwaniasz, gdy masz chwilę — klient nie
-							zostaje bez odpowiedzi.
+							powiadomienie SMS lub e-mail. Oddzwaniasz, gdy
+							masz chwilę — klient nie zostaje bez odpowiedzi.
 						</p>
 					</div>
 				</div>
@@ -485,16 +567,18 @@
 					<button
 						class="accordion-btn w-full py-5 text-left font-medium text-lg flex items-center justify-between hover:text-terracotta transition-colors"
 					>
-						Skąd bot wie, że jestem wolny?
+						Skąd bot wie, kiedy jestem wolny?
 						<span class="icon-rotate text-xl leading-none">+</span>
 					</button>
 					<div class="accordion-content">
 						<p class="pb-5 text-darkBg/70">
-							Zna terminy, które sam przyjął, i dni wolne, które
-							ustawisz. Dzięki temu nie umówi dwóch klientów na tę
-							samą godzinę. Ostateczny termin zawsze potwierdzasz
-							Ty. Starych terminów bot pamięta w celach
-							bezpieczeństwa.
+							Jeśli korzystasz z Google Calendar, bot sprawdza go
+							przed zaproponowaniem terminu i zapisuje rezerwację.
+							Bez podłączonego kalendarza działa w Trybie
+							Zgłoszeniowym (Relay): zbiera dane klienta i preferowany
+							termin, a następnie wysyła Ci SMS lub e-mail. To
+							zgłoszenie, nie potwierdzona rezerwacja — dostępność
+							sprawdzasz i wizytę potwierdzasz osobiście.
 						</p>
 					</div>
 				</div>
@@ -507,8 +591,16 @@
 					</button>
 					<div class="accordion-content">
 						<p class="pb-5 text-darkBg/70">
-							Żadnych umów na czas określony. Rezygnujesz w
-							dowolnym momencie, bez kar i wypowiedzeń.
+							Standardowo umowa jest na czas nieokreślony.
+							Wypowiedzenie wyślij e-mailem lub pisemnie
+							co najmniej 7 dni kalendarzowych
+							przed końcem opłaconego, 30-dniowego okresu
+							rozliczeniowego. Późniejsze wypowiedzenie oznacza
+							zakończenie umowy z końcem kolejnego pełnego okresu.
+							Przy zwykłej rezygnacji opłacony okres nie podlega
+							zwrotowi; wykorzystane pakiety dodatkowe pozostają
+							do rozliczenia. Szczegóły i wyjątek dotyczący zmian
+							Regulaminu opisano w § 10 i § 12 Regulaminu.
 						</p>
 					</div>
 				</div>
@@ -521,9 +613,11 @@
 					</button>
 					<div class="accordion-content">
 						<p class="pb-5 text-darkBg/70">
-							Nie. Ustawiamy przekierowanie na Twoim obecnym
-							numerze — bot odbiera tylko wtedy, gdy Ty nie
-							możesz.
+							Nie. Włączasz przekierowanie u operatora na swoim
+							obecnym numerze — bot odbiera, jeśli nie odpowiesz
+							przez 10 sekund albo linia jest zajęta. Pomagamy we
+							wdrożeniu, ale konfiguracja i koszty przekierowania
+							pozostają po Twojej stronie.
 						</p>
 					</div>
 				</div>
@@ -537,8 +631,8 @@
 					<div class="accordion-content">
 						<p class="pb-5 text-darkBg/70">
 							Tak — dane klientów przetwarzamy zgodnie z RODO, a
-							umowę powierzenia przetwarzania danych podpisujemy z
-							każdym klientem.
+							umowę powierzenia przetwarzania danych (DPA) zawieramy z
+							każdym klientem w ramach § 11 Regulaminu.
 						</p>
 					</div>
 				</div>
@@ -551,9 +645,9 @@
 					</button>
 					<div class="accordion-content">
 						<p class="pb-5 text-darkBg/70">
-							Bot zbiera zgłoszenie i od razu wysyła Ci SMS-a z
-							numerem klienta — oddzwaniasz w kilka minut, a nie
-							po powrocie do warsztatu.
+							Bot zbiera zgłoszenie i od razu wysyła Ci SMS lub
+							e-mail z numerem klienta. Możesz oddzwonić, gdy
+							tylko masz chwilę.
 						</p>
 					</div>
 				</div>
@@ -568,56 +662,46 @@
 				>
 					Cennik
 				</h2>
-				<div class="grid md:grid-cols-1 gap-8 max-w-sm mx-auto">
+				<div class="grid md:grid-cols-1 gap-8 max-w-md mx-auto">
 					<div
 						class="bg-bgWhite text-darkBg rounded-2xl p-9 shadow-lg flex flex-col justify-between"
 					>
 						<div>
-							<h3 class="text-xl font-bold mb-4">
-								Pierwsi 5 klientów
+							<h3 class="text-sm font-bold mb-3">
+								Pilotaż · 5 miejsc
 							</h3>
-							<p class="text-darkBg/50 mb-6 text-sm">
-								Pierwsze 14 dni <b>za darmo</b>, dalej
+							<p
+								class="text-black text-3xl font-serif font-bold mb-4"
+							>
+								14 dni za darmo
 							</p>
-							<div class="text-4xl font-serif font-bold mb-1">
+							<p class="text-darkBg/50 text-sm mb-1">
+								<b>549 zł</b> za pierwszy miesiąc z konfiguracją
+							</p>
+							<div
+								class="text-2xl mb-8 font-serif font-bold mb-1"
+							>
+								<span
+									class="text-base text-darkBg/70 font-sans font-normal mr-1"
+									>Dalej</span
+								>
 								299
 								<span
-									class="text-base text-darkBg/40 font-sans font-normal"
-									>zł / msc</span
+									class="text-base text-darkBg/70 font-sans font-normal"
+									>zł/mies</span
 								>
 							</div>
-							<p class="text-darkBg/50 mb-7 text-sm">
-								cena <b>nie zawiera VAT</b>
-							</p>
-							<ul
-								class="space-y-3 mb-9 text-darkBg/70 text-sm font-medium"
-							>
-								<li class="flex items-center gap-3">
-									<span class="text-terracotta font-bold"
-										>✓</span
-									>
-									Odbieranie, gdy Ty nie możesz
-								</li>
-								<li class="flex items-center gap-3">
-									<span class="text-terracotta font-bold"
-										>✓</span
-									>
-									Umawianie wizyt
-								</li>
-								<li class="flex items-center gap-3">
-									<span class="text-terracotta font-bold"
-										>✓</span
-									>
-									Powiadomienia SMS
-								</li>
-							</ul>
 						</div>
 						<a
 							href="#"
 							data-open-trial
-							class="block w-full py-3.5 rounded-lg bg-terracotta text-white text-center font-bold hover:bg-terracottaDeep transition-colors"
-							>Wypróbuj</a
+							class="block w-full py-3.5 rounded-lg bg-terracotta text-white text-center font-bold hover:bg-terracottaDeep transition-colors mb-4"
+							>Zgłoś się do pilotażu</a
 						>
+						<p class="text-darkBg/50 text-xs">
+							Zwolnione z VAT · okres rozliczeniowy: 30 dni.
+							Pilotaż nie przechodzi automatycznie w płatną subskrypcję.
+						</p>
 					</div>
 				</div>
 			</div>
@@ -636,7 +720,7 @@
 					data-open-trial
 					class="bg-terracotta hover:bg-terracottaDeep text-white text-lg font-bold px-10 py-5 rounded-xl inline-flex items-center gap-3 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 px-3.5 md:px-8"
 				>
-					Wypróbuj w swoim biznesie
+					Wypróbuj w swojej firmie
 					<svg class="w-5 h-5" viewBox="0 0 20 20" fill="none">
 						<path
 							d="M4 10h12M11 5l5 5-5 5"
@@ -648,7 +732,7 @@
 					</svg>
 				</button>
 				<p class="mt-6 text-darkBg/50 font-medium text-sm">
-					Bez podawania karty kredytowej.
+					14 dni bezpłatnego pilotażu dla pierwszych 5 firm.
 				</p>
 			</div>
 		</section>
@@ -664,18 +748,18 @@
 						C
 					</div>
 					<span class="font-serif font-bold text-xl text-bgWhite"
-						>Call-T</span
+						>Gloso</span
 					>
 				</div>
 				<div class="text-center md:text-left text-sm">
 					<p>Kielce, Świętokrzyskie</p>
 					<p class="footer-phone cursor-pointer">+48 888 571 698</p>
 				</div>
-				<div class="flex gap-6 text-sm">
-					<a href="#" class="hover:text-bgWhite transition-colors"
+				<div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+					<a href="polityka-prywatnosci.html" class="hover:text-bgWhite transition-colors"
 						>Polityka Prywatności</a
 					>
-					<a href="#" class="hover:text-bgWhite transition-colors"
+					<a href="polityka-prywatnosci.html#twoje-prawa" class="hover:text-bgWhite transition-colors"
 						>RODO</a
 					>
 					<a href="#" class="hover:text-bgWhite transition-colors"
@@ -686,7 +770,7 @@
 			<div
 				class="text-center mt-10 text-xs text-bgWhite/30 border-t border-bgWhite/10 pt-6"
 			>
-				&copy; 2026 Call-T.
+				&copy; 2026 Gloso.
 			</div>
 		</footer>
 
@@ -728,7 +812,7 @@
 						id="trialTitle"
 						class="text-2xl font-serif font-bold text-darkBg mb-2 pr-8"
 					>
-						Wypróbuj Call-T
+						Wypróbuj Gloso
 					</h2>
 					<p class="text-sm text-darkBg/60 mb-5">
 						Najszybciej: zadzwoń i sprawdź, jak bot odbiera telefon.
@@ -780,7 +864,7 @@
 								autocomplete="organization"
 								required
 								maxlength="100"
-								placeholder="np. Auto-Serwis Kowalski"
+								placeholder="np. Serwis Kowalski"
 								class="w-full px-4 py-3 rounded-lg bg-white border border-darkBg/15 text-darkBg placeholder:text-darkBg/35 focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/25 transition-colors"
 							/>
 						</div>
@@ -816,6 +900,10 @@
 							class="text-sm text-red-700 min-h-[1.25rem] mb-3"
 							role="alert"
 						></p>
+						<p class="text-xs text-darkBg/60 mb-4 leading-relaxed">
+							Informacje o przetwarzaniu danych znajdziesz w
+							<a href="polityka-prywatnosci.html" class="text-terracottaDeep underline underline-offset-2 hover:text-darkBg">Polityce prywatności</a>.
+						</p>
 						<button
 							type="submit"
 							id="trialSubmit"
@@ -824,8 +912,8 @@
 							Oddzwońcie do mnie
 						</button>
 						<p class="mt-3 text-xs text-darkBg/45 text-center">
-							Bez podawania karty kredytowej. Pierwsze 14 dni za
-							darmo.
+							Bez podawania karty kredytowej. 14-dniowy bezpłatny
+							pilot dla pierwszych 5 firm.
 						</p>
 					</form>
 
@@ -877,9 +965,13 @@
 					btn.classList.remove('text-terracotta')
 					const calls = parseInt(btn.dataset.calls)
 					const money = calls * multiplier * 4
-					lostMoney.textContent = money
+					const moneyFormatted = money
 						.toString()
 						.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+					lostMoney.textContent =
+						money >= 4200
+							? moneyFormatted + ' zł' + ' i więcej'
+							: moneyFormatted + ' zł'
 				})
 			})
 
@@ -894,39 +986,67 @@
 				document.querySelectorAll('.audio-player'),
 			)
 			audioPlayers.forEach((player) => {
-				const audio = player.parentElement.querySelector('.sample-audio')
+				const audio =
+					player.parentElement.querySelector('.sample-audio')
 				const button = player.querySelector('.audio-play-button')
 				const waveform = player.querySelector('.audio-waveform')
 				const time = player.querySelector('.audio-time')
 				const barsCount = 56
 
-				waveform.innerHTML = Array.from({ length: barsCount }, (_, index) => {
-					const height = 20 + Math.round(
-						(Math.sin(index * 1.71) + Math.sin(index * 0.43) + 2) * 19,
-					)
-					return `<span class="wave-bar flex-1 min-w-[2px]" style="height: ${height}%"></span>`
-				}).join('')
+				waveform.innerHTML = Array.from(
+					{ length: barsCount },
+					(_, index) => {
+						const height =
+							20 +
+							Math.round(
+								(Math.sin(index * 1.71) +
+									Math.sin(index * 0.43) +
+									2) *
+									19,
+							)
+						return `<span class="wave-bar flex-1 min-w-[2px]" style="height: ${height}%"></span>`
+					},
+				).join('')
 
 				const updateTime = () => {
 					time.textContent = `${formatAudioTime(audio.currentTime)} / ${formatAudioTime(audio.duration)}`
 				}
 				const updateWaveform = () => {
-					const progress = audio.duration ? audio.currentTime / audio.duration : 0
+					const progress = audio.duration
+						? audio.currentTime / audio.duration
+						: 0
 					const playedBars = Math.floor(progress * barsCount)
-					waveform.querySelectorAll('.wave-bar').forEach((bar, index) => {
-						bar.classList.toggle('is-played', index < playedBars)
-					})
+					waveform
+						.querySelectorAll('.wave-bar')
+						.forEach((bar, index) => {
+							bar.classList.toggle(
+								'is-played',
+								index < playedBars,
+							)
+						})
 				}
 				const updateButton = (isPlaying) => {
-					button.querySelector('.play-icon').classList.toggle('hidden', isPlaying)
-					button.querySelector('.pause-icon').classList.toggle('hidden', !isPlaying)
-					button.setAttribute('aria-label', isPlaying ? 'Wstrzymaj nagranie rozmowy' : 'Odtwórz nagranie rozmowy')
+					button
+						.querySelector('.play-icon')
+						.classList.toggle('hidden', isPlaying)
+					button
+						.querySelector('.pause-icon')
+						.classList.toggle('hidden', !isPlaying)
+					button.setAttribute(
+						'aria-label',
+						isPlaying
+							? 'Wstrzymaj nagranie rozmowy'
+							: 'Odtwórz nagranie rozmowy',
+					)
 				}
 
 				button.addEventListener('click', () => {
 					if (audio.paused) {
 						audioPlayers.forEach((otherPlayer) => {
-							const otherAudio = otherPlayer.parentElement.querySelector('.sample-audio')
+							const otherAudio =
+								otherPlayer.parentElement.querySelector(
+									'.sample-audio',
+								)
 							if (otherAudio !== audio) otherAudio.pause()
 						})
 						audio.play().catch(() => updateButton(false))
@@ -944,72 +1064,76 @@
 					updateWaveform()
 				})
 				audio.addEventListener('loadedmetadata', updateTime)
+				audio.addEventListener('emptied', () => {
+					waveform.classList.remove('has-started')
+					updateButton(false)
+					updateTime()
+					updateWaveform()
+				})
 				audio.addEventListener('ended', () => {
 					updateButton(false)
 					updateWaveform()
 				})
 			})
+
+			// Niche tabs
+			const nicheContent = document.getElementById('nicheContent')
+			const nicheText = document.getElementById('nicheText')
+			const nicheIcon = document.getElementById('nicheIcon')
+			const nicheAudioWrap = document.getElementById('nicheAudioWrap')
+			const nicheAudio = nicheAudioWrap.querySelector('audio')
+			const nicheAudioTitle = document.getElementById('nicheAudioTitle')
+			const nicheTabs = document.querySelectorAll('.niche-tab')
 			const nicheData = {
 				auto: {
-					text: 'Mechanik ma ręce w oleju i <span class="font-bold text-terracotta">nie może podnieść słuchawki</span> — klient dzwoni do serwisu obok.',
-					viewBox: '0 0 122.88 122.88',
-					icon: '<path d="M61.44,21.74c10.96,0,20.89,4.44,28.07,11.63c7.18,7.18,11.63,17.11,11.63,28.07c0,10.96-4.44,20.89-11.63,28.07 c-7.18,7.18-17.11,11.63-28.07,11.63c-10.96,0-20.89-4.44-28.07-11.63c-7.18-7.18-11.63-17.11-11.63-28.07 c0-10.96,4.44-20.89,11.63-28.07C40.55,26.19,50.48,21.74,61.44,21.74L61.44,21.74z M61.44,0c16.97,0,32.33,6.88,43.44,18 c11.12,11.12,18,26.48,18,43.44c0,16.97-6.88,32.33-18,43.44c-11.12,11.12-26.48,18-43.44,18c-16.97,0-32.33-6.88-43.44-18 C6.88,93.77,0,78.41,0,61.44C0,44.47,6.88,29.11,18,18C29.11,6.88,44.47,0,61.44,0L61.44,0z M93.47,29.41 c-8.2-8.2-19.52-13.27-32.03-13.27c-12.51,0-23.83,5.07-32.03,13.27c-8.2,8.2-13.27,19.52-13.27,32.03 c0,12.51,5.07,23.83,13.27,32.03c8.2,8.2,19.52,13.27,32.03,13.27c12.51,0,23.83-5.07,32.03-13.27c8.2-8.2,13.27-19.52,13.27-32.03 C106.74,48.93,101.67,37.61,93.47,29.41L93.47,29.41z M65.45,56.77c-1.02-1.02-2.43-1.65-4.01-1.65c-1.57,0-2.99,0.63-4.01,1.65 l-0.01,0.01c-1.02,1.02-1.65,2.43-1.65,4.01c0,1.57,0.63,2.99,1.65,4.01l0.01,0.01c1.02,1.02,2.43,1.65,4.01,1.65 c1.57,0,2.99-0.63,4.01-1.65l0.01-0.01c1.02-1.02,1.65-2.44,1.65-4.01C67.1,59.21,66.47,57.8,65.45,56.77L65.45,56.77L65.45,56.77z M65.06,50.79c1.47,0.54,2.8,1.39,3.89,2.48l0,0l0,0c0.37,0.37,0.72,0.77,1.03,1.2l0.1-0.03l21.02-5.63 c-1.63-3.83-3.98-7.28-6.88-10.17c-5.03-5.03-11.72-8.41-19.17-9.24v21.12C65.07,50.61,65.07,50.7,65.06,50.79L65.06,50.79z M72.04,61.63c-0.14,1.73-0.69,3.35-1.57,4.76c0.05,0.06,0.09,0.13,0.13,0.2l12.07,19.13c0.54-0.47,1.06-0.96,1.57-1.47 c5.83-5.83,9.44-13.9,9.44-22.8c0-1.87-0.16-3.7-0.47-5.49L72.04,61.63L72.04,61.63z M64.57,70.95c-0.99,0.31-2.04,0.47-3.13,0.47 c-0.98,0-1.93-0.13-2.84-0.38L46.82,90.19c4.39,2.24,9.36,3.5,14.62,3.5c5.46,0,10.6-1.36,15.11-3.75L64.57,70.95L64.57,70.95z M52.57,66.64c-0.92-1.38-1.52-2.99-1.7-4.71l-0.01,0l-21.09-6.6c-0.38,1.98-0.58,4.02-0.58,6.11c0,8.9,3.61,16.97,9.44,22.8 c0.63,0.63,1.29,1.24,1.98,1.82l11.8-19.19C52.47,66.8,52.52,66.72,52.57,66.64L52.57,66.64z M52.72,54.72 c0.36-0.51,0.76-1,1.21-1.44l0,0l0,0c1.05-1.04,2.31-1.87,3.71-2.41c-0.01-0.11-0.02-0.23-0.02-0.34v-21.1 c-7.38,0.87-14,4.23-18.98,9.22c-2.75,2.75-5.01,6-6.63,9.6L52.72,54.72L52.72,54.72z"/>',
-				},
-				mistrzowie: {
-					text: 'Elektryk pod napięciem <span class="font-bold text-terracotta">nie odbiera telefonu</span> — klient myśli, że go zignorowano, i szuka kogoś innego. ',
-					viewBox: '0 0 512 512',
-					icon: '<path d="M104.426,139.813l83.563,83.781c14.344-13.766,26.781-25.703,36.109-34.672l-84.297-84.5l-10.313-45.719 L54.27,12.985L33.629,33.642L12.988,54.282l45.719,75.219L104.426,139.813z"/><path d="M358.363,276.298L481.926,399.47c22.781,22.766,22.781,59.688,0,82.469c-22.781,22.766-59.688,22.766-82.469,0 L275.895,358.767L358.363,276.298z"/><path d="M459.957,203.407c42.547-38.609,49.656-82.484,40.141-119.484c-0.281-2.938-0.984-5.406-3.547-7.25 l-8.563-7.016c-1.484-1.391-3.484-2.063-5.484-1.875c-2.016,0.203-3.844,1.234-5.031,2.875l-49.25,64.031 c-1.375,1.891-3.594,2.969-5.922,2.891l-17.875,1.313c-1.531-0.047-3.016-0.594-4.219-1.563l-34.531-29.266 c-1.406-1.141-2.328-2.766-2.563-4.563l-2.141-16.188c-0.25-1.781,0.203-3.594,1.266-5.063l46.109-62.641 c2.094-2.875,1.688-6.859-0.906-9.281l-11.188-8.75c-2.188-2.031-4.672-1.75-8.063-1.094 c-31.844,6.281-86.219,37.125-100.016,79.75c-12.156,37.516-7.922,63.969-7.922,63.969c0,21.141-6.953,41.516-15.5,50.063 L24.504,424.923c-0.469,0.422-0.922,0.859-1.375,1.313c-19.844,19.844-19.813,52.047-0.641,71.219s51.859,19.672,71.703-0.172 c0.922-0.922,1.813-1.875,2.641-2.859l231.672-250.438C357.004,218.61,413.426,245.642,459.957,203.407z"/>',
-				},
-			}
-			const nicheAudioData = {
-				auto: {
+					text: nicheText.innerHTML,
+					icon: nicheIcon.innerHTML,
+					viewBox: nicheIcon.getAttribute('viewBox'),
 					src: 'audio/Autoserwis.wav',
-					title: 'Przykładowa rozmowa z botem autoserwisu',
+					title: nicheAudioTitle.textContent.trim(),
 					label: 'Nagranie rozmowy z botem autoserwisu',
 				},
 				mistrzowie: {
+					text: 'Elektryk ma zajęte ręce i <span class="font-bold text-terracotta">nie może odebrać telefonu</span> — klient szuka innego fachowca.',
+					icon: '<path d="M13 2 3 14h7l-1 8 12-12h-7l1-8z"/>',
+					viewBox: '0 0 24 24',
 					src: 'audio/Elektryk.wav',
-					title: 'Przykładowa rozmowa z elektrykiem',
+					title: 'Przykładowa rozmowa z botem elektryka',
 					label: 'Nagranie rozmowy z botem elektryka',
 				},
 			}
+			let activeNiche = 'auto'
 			let nicheTransitionTimeout
-			document.querySelectorAll('.niche-tab').forEach((btn) => {
-				btn.addEventListener('click', () => {
-					document.querySelectorAll('.niche-tab').forEach((t) => {
-						t.classList.remove('bg-terracotta', 'text-white')
-						t.classList.add('text-terracotta')
-					})
-					btn.classList.add('bg-terracotta', 'text-white')
-					btn.classList.remove('text-terracotta')
-					const nicheContent = document.getElementById('nicheContent')
-					nicheContent.classList.add('opacity-0', 'translate-y-2')
+			nicheTabs.forEach((button) => {
+				button.addEventListener('click', () => {
+					if (button.dataset.tab === activeNiche) return
+					activeNiche = button.dataset.tab
 					clearTimeout(nicheTransitionTimeout)
+					nicheAudio.pause()
+					nicheTabs.forEach((tab) => {
+						const selected = tab.dataset.tab === activeNiche
+						tab.classList.toggle('bg-terracotta', selected)
+						tab.classList.toggle('text-white', selected)
+						tab.classList.toggle('text-terracotta', !selected)
+						tab.setAttribute('aria-pressed', String(selected))
+					})
+					nicheContent.classList.add('opacity-0', 'translate-y-2')
 					nicheTransitionTimeout = setTimeout(() => {
-						const data = nicheData[btn.dataset.tab]
-						const audioData = nicheAudioData[btn.dataset.tab]
-						const nicheAudioWrap = document.getElementById('nicheAudioWrap')
-						const nicheAudio = nicheAudioWrap.querySelector('audio')
-						nicheAudio.pause()
-						nicheAudio.querySelector('source').src = audioData.src
-						nicheAudio.setAttribute('aria-label', audioData.label)
+						const data = nicheData[activeNiche]
+						nicheText.innerHTML = data.text
+						nicheIcon.innerHTML = data.icon
+						nicheIcon.setAttribute('viewBox', data.viewBox)
+						nicheAudioTitle.textContent = data.title
+						nicheAudio.setAttribute('aria-label', data.label)
+						nicheAudio
+							.querySelector('source')
+							.setAttribute('src', data.src)
 						nicheAudio.load()
-						nicheAudioWrap.querySelector('#nicheAudioTitle').textContent = audioData.title
-						const nicheWaveform = nicheAudioWrap.querySelector('.audio-waveform')
-						nicheWaveform.classList.remove('has-started')
-						nicheWaveform.querySelectorAll('.wave-bar').forEach((bar) => {
-							bar.classList.remove('is-played')
-						})
-						nicheAudioWrap.querySelector('.audio-time').textContent = '0:00 / 0:00'
-						document.getElementById('nicheText').innerHTML = data.text
-						document
-							.getElementById('nicheIcon')
-							.setAttribute('viewBox', data.viewBox)
-						document.getElementById('nicheIcon').innerHTML = data.icon
-						requestAnimationFrame(() => {
-							nicheContent.classList.remove('opacity-0', 'translate-y-2')
-						})
-					}, 180)
+						nicheContent.classList.remove(
+							'opacity-0',
+							'translate-y-2',
+						)
+					}, 300)
 				})
 			})
 
@@ -1154,17 +1278,21 @@
 			trialForm.addEventListener('submit', async (e) => {
 				e.preventDefault()
 				const business = trialBusiness.value.trim()
-				const phone = trialPhoneInput.value.trim()
-				const digits = phone.replace(/\D/g, '')
+				const rawPhone = trialPhoneInput.value.trim()
+				const nationalPhone = rawPhone
+					.replace(/[\s\-()]/g, '')
+					.replace(/^(?:\+48|0048|48(?=\d{9}$))/, '')
 				if (!business) {
 					trialError.textContent = 'Podaj nazwę firmy.'
 					return trialBusiness.focus()
 				}
-				if (!/^[+\d][\d\s\-()]*$/.test(phone) || digits.length !== 9) {
+				if (!/^\d{9}$/.test(nationalPhone)) {
 					trialError.textContent =
 						'Podaj poprawny numer telefonu (9 cyfr).'
 					return trialPhoneInput.focus()
 				}
+				trialPhoneInput.value = nationalPhone
+				const phone = `+48${nationalPhone}`
 				trialError.textContent = ''
 				trialSubmit.disabled = true
 				try {
@@ -1187,13 +1315,31 @@
 			})
 
 			// Accordion
+			const updateAccordionHeight = (content) => {
+				content.style.height = content.classList.contains('open')
+					? `${content.firstElementChild.scrollHeight}px`
+					: '0px'
+			}
+			const accordionResizeObserver = new ResizeObserver((entries) => {
+				entries.forEach((entry) => {
+					updateAccordionHeight(entry.target.parentElement)
+				})
+			})
 			document.querySelectorAll('.accordion-btn').forEach((btn) => {
+				const parent = btn.parentElement
+				const content = btn.nextElementSibling
+				btn.setAttribute(
+					'aria-expanded',
+					String(content.classList.contains('open')),
+				)
+				updateAccordionHeight(content)
+				accordionResizeObserver.observe(content.firstElementChild)
 				btn.addEventListener('click', () => {
-					const parent = btn.parentElement
-					const content = btn.nextElementSibling
 					const isOpen = parent.classList.contains('open')
 					parent.classList.toggle('open', !isOpen)
 					content.classList.toggle('open', !isOpen)
+					btn.setAttribute('aria-expanded', String(!isOpen))
+					updateAccordionHeight(content)
 				})
 			})
 

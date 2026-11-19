@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Polityka prywatności | Gloso</title>
+		<meta
+			name="description"
+			content="Informacje o przetwarzaniu danych osobowych, plikach cookies i ochronie prywatności w serwisie Gloso."
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Bitter:wght@400;600;700;900&family=JetBrains+Mono:wght@500&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- UWAGA PRODUKCYJNA: przed wdrożeniem na produkcję zalecane jest skompilowanie Tailwind CSS lokalnie oraz przeniesienie fontów na serwer cyberFolks.pl, aby wyeliminować połączenia z zewnętrznymi CDN bez zgody -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						colors: {
+							bgWhite: '#F5F1EA',
+							stone: '#E7E4DE',
+							terracotta: '#C9622E',
+							terracottaDeep: '#A8552E',
+							darkBg: '#22262B',
+						},
+						fontFamily: {
+							sans: ['Golos Text', 'sans-serif'],
+							serif: ['Bitter', 'serif'],
+							mono: ['JetBrains Mono', 'monospace'],
+						},
+					},
+				},
+			}
+		</script>
+		<style>
+			.policy-content h2 {
+				font-family: 'Bitter', serif;
+				font-size: 1.25rem;
+				font-weight: 700;
+				color: #22262b;
+				margin: 2.5rem 0 1rem;
+				scroll-margin-top: 6rem;
+			}
+			.policy-content ol {
+				list-style: decimal;
+				padding-left: 1.5rem;
+			}
+			.policy-content ul {
+				list-style: disc;
+				padding-left: 1.5rem;
+			}
+			.policy-content li {
+				margin-top: 0.75rem;
+			}
+			.policy-content a {
+				color: #a8552e;
+				text-decoration: underline;
+				text-underline-offset: 3px;
+			}
+			.policy-content a:hover {
+				color: #22262b;
+			}
+		</style>
+	</head>
+	<body
+		class="font-sans text-darkBg bg-bgWhite antialiased selection:bg-terracotta selection:text-white"
+	>
+		<header
+			class="border-b border-terracotta/40 bg-bgWhite sticky top-0 z-50"
+		>
+			<div
+				class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex flex-wrap gap-4 items-center justify-between"
+			>
+				<a
+					href="/"
+					class="flex items-center gap-2"
+					aria-label="Gloso — strona główna"
+				>
+					<span
+						class="w-8 h-8 rounded-md bg-darkBg text-bgWhite flex items-center justify-center font-serif font-bold text-sm"
+						>G</span
+					>
+					<span class="font-serif font-bold text-xl tracking-tight"
+						>Gloso</span
+					>
+				</a>
+				<nav
+					class="flex items-center gap-6 text-sm font-medium text-darkBg/70"
+				>
+					<a
+						href="regulamin.html"
+						class="hover:text-terracotta transition-colors"
+						>Regulamin</a
+					>
+					<a href="/" class="hover:text-terracotta transition-colors"
+						>← Strona główna</a
+					>
+				</nav>
+			</div>
+		</header>
+		<main id="polityka" class="max-w-3xl mx-auto px-6 py-12 sm:py-20">
+			<p
+				class="font-mono text-xs tracking-widest uppercase text-terracottaDeep mb-4"
+			>
+				Gloso · Prywatność
+			</p>
+			<h1
+				class="text-3xl sm:text-4xl font-serif font-bold leading-tight mb-4"
+			>
+				Polityka prywatności
+			</h1>
+			<p class="text-sm text-darkBg/60">
+				Ostatnia aktualizacja:
+				<time datetime="2026-11-19">19 listopada 2026 r.</time>
+			</p>
+			<article
+				class="policy-content text-darkBg/80 text-base leading-relaxed break-words"
+			>
+				<h2>1. Informacje ogólne</h2>
+				<ol>
+					<li>
+						Niniejsza polityka dotyczy Serwisu www funkcjonującego
+						pod adresem: <b>gloso.pl</b> oraz informuje o zasadach
+						przetwarzania danych w ramach usługi Asystenta Głosowego
+						AI Gloso.
+					</li>
+					<li>
+						Operatorem Serwisu oraz Administratorem danych osobowych
+						(w zakresie wskazanym w ust. 4) jest:
+						<b>Tymur Surkis</b>, al. Tysiąclecia Państwa Polskiego
+						13, 25-314 Kielce (działalność nierejestrowana w
+						rozumieniu art. 5 ustawy – Prawo przedsiębiorców).
+					</li>
+					<li>
+						Adres kontaktowy poczty elektronicznej Operatora:
+						<a href="mailto:kontakt@gloso.pl">kontakt@gloso.pl</a>.
+					</li>
+					<li>
+						Operator jest Administratorem Twoich danych osobowych w
+						odniesieniu do danych podanych dobrowolnie w
+						korespondencji z Serwisem, danych technicznych
+						użytkowników strony oraz danych kontrahentów (warsztatów
+						i firm) korzystających z usług Operatora. W odniesieniu
+						do osób dzwoniących na numery klientów Operatora
+						(warsztatów), Operator działa jako Podmiot
+						Przetwarzający – szczegóły opisano w punkcie 10.
+					</li>
+					<li>
+						Serwis przetwarza dane osobowe w następujących celach i
+						na następujących podstawach prawnych:
+						<ul>
+							<li>
+								<b
+									>Obsługa zapytań i kontakt przed zawarciem
+									umowy</b
+								>
+								– art. 6 ust. 1 lit. b RODO (podjęcie działań
+								przed zawarciem umowy z osobą, której dane
+								dotyczą) lub art. 6 ust. 1 lit. f RODO
+								(uzasadniony interes Administratora polegający
+								na obsłudze korespondencji z przedstawicielami
+								firm);
+							</li>
+							<li>
+								<b
+									>Realizacja zamówionych usług (wdrożenie i
+									utrzymanie asystenta głosowego AI)</b
+								>
+								– art. 6 ust. 1 lit. b RODO (wykonanie umowy);
+							</li>
+							<li>
+								<b
+									>Realizacja obowiązków prawnych, w tym
+									podatkowych i rachunkowych (ewidencja
+									sprzedaży, wystawianie rachunków lub faktur,
+									w tym w KSeF)</b
+								>
+								– art. 6 ust. 1 lit. c RODO;
+							</li>
+							<li>
+								<b
+									>Bezpieczeństwo i administrowanie Serwisem,
+									w tym logi techniczne</b
+								>
+								– art. 6 ust. 1 lit. f RODO (uzasadniony interes
+								polegający na zapewnieniu prawidłowego działania
+								i bezpieczeństwa Serwisu);
+							</li>
+							<li>
+								<b
+									>Planowana analiza statystyczna ruchu na
+									stronie (Google Analytics)</b
+								>
+								– po uruchomieniu wyłącznie na podstawie art. 6
+								ust. 1 lit. a RODO oraz art. 399 ustawy – Prawo
+								komunikacji elektronicznej (dobrowolna zgoda
+								użytkownika). Na dzień aktualizacji tej polityki
+								Google Analytics nie jest jeszcze uruchomiony;
+							</li>
+							<li>
+								<b
+									>Ewentualne ustalenie, dochodzenie roszczeń
+									lub obrona przed nimi</b
+								>
+								– art. 6 ust. 1 lit. f RODO (prawnie uzasadniony
+								interes Administratora).
+							</li>
+						</ul>
+					</li>
+					<li>
+						Serwis pozyskuje informacje o użytkownikach w
+						następujący sposób:
+						<ol>
+							<li>
+								Poprzez dane przekazane dobrowolnie w
+								korespondencji e-mailowej lub podczas kontaktu
+								telefonicznego (aktualny status formularza
+								opisano w punkcie 5).
+							</li>
+							<li>
+								Poprzez dane techniczne połączenia ze stroną, w
+								tym logi serwera. Informacje o planowanej
+								analityce i plikach cookies opisano w punktach
+								7–9.
+							</li>
+						</ol>
+					</li>
+				</ol>
+
+				<h2>
+					2. Wybrane metody ochrony danych stosowane przez Operatora
+				</h2>
+				<ol>
+					<li>
+						Transmisja danych w publicznym Serwisie oraz pomiędzy
+						komponentami aplikacji jest zabezpieczona protokołem
+						HTTPS/TLS.
+					</li>
+					<li>
+						W celu minimalizacji ryzyka nieuprawnionego dostępu do
+						danych Operator stosuje silne, unikalne hasła oraz
+						zarządza dostępami za pomocą szyfrowanego menedżera
+						haseł.
+					</li>
+					<li>
+						Operator korzysta z uwierzytelniania dwuskładnikowego
+						(2FA) w obsługujących je systemach, stosuje zasadę
+						minimalnych uprawnień i ogranicza dostęp do danych
+						wyłącznie do osób upoważnionych i zobowiązanych do
+						poufności.
+					</li>
+				</ol>
+
+				<h2>3. Hosting</h2>
+				<ol>
+					<li>
+						Serwis www jest hostowany (technicznie utrzymywany) na
+						serwerze operatora: <b>cyberFolks.pl</b> (cyber_Folks
+						S.A. z siedzibą w Poznaniu).
+					</li>
+					<li>
+						Firma hostingowa w celu zapewnienia niezawodności i
+						bezpieczeństwa prowadzi logi na poziomie serwera.
+						Zapisowi mogą podlegać:
+						<ul>
+							<li>
+								zasoby określone identyfikatorem URL (adresy
+								żądanych stron i plików),
+							</li>
+							<li>
+								czas nadejścia zapytania oraz czas wysłania
+								odpowiedzi,
+							</li>
+							<li>informacje o błędach protokołu HTTP,</li>
+							<li>
+								adres URL strony poprzednio odwiedzanej (referer
+								link),
+							</li>
+							<li>
+								informacje o przeglądarce użytkownika oraz
+								adresie IP,
+							</li>
+							<li>
+								dane techniczne związane z obsługą poczty
+								elektronicznej kierowanej do Operatora i
+								wysyłanej przez Operatora.
+							</li>
+						</ul>
+					</li>
+				</ol>
+
+				<h2 id="twoje-prawa">
+					4. Twoje prawa i okresy przechowywania danych
+				</h2>
+				<ol>
+					<li>
+						Administrator może przekazywać dane osobowe innym
+						odbiorcom wyłącznie wtedy, gdy jest to niezbędne do
+						wykonania umowy, realizacji obowiązków prawnych lub
+						zapewnienia działania Serwisu:
+						<ul>
+							<li>
+								firmie hostingowej oraz dostawcom infrastruktury
+								serwerowej i bazodanowej na podstawie umów
+								powierzenia,
+							</li>
+							<li>
+								dostawcom poczty elektronicznej, usług
+								telekomunikacyjnych, bramki SMS i usług
+								chmurowych, a po uruchomieniu analityki i
+								uzyskaniu zgody – również Google Analytics,
+							</li>
+							<li>
+								bankom i operatorom płatności (w zakresie
+								obsługi rozliczeń),
+							</li>
+							<li>
+								organom publicznym (w tym organom skarbowym i
+								systemowi KSeF) w przypadkach przewidzianych
+								przepisami prawa.
+							</li>
+						</ul>
+					</li>
+					<li>
+						<b>Okresy przechowywania danych:</b>
+						<ul>
+							<li>
+								Dane kontaktowe i korespondencja – przez czas
+								niezbędny do obsługi zapytania i ewentualnego
+								nawiązania współpracy (nie dłużej niż 12
+								miesięcy od ostatniego kontaktu, jeśli nie
+								doszło do zawarcia umowy).
+							</li>
+							<li>
+								Dane umowne kontrahentów – przez czas realizacji
+								umowy, a po jej zakończeniu do upływu ustawowych
+								terminów przedawnienia roszczeń (co do zasady 3
+								lata w relacjach B2B).
+							</li>
+							<li>
+								Dokumenty księgowe i rozliczeniowe (ewidencja
+								sprzedaży, rachunki, faktury) – przez
+								<b
+									>5 lat licząc od końca roku kalendarzowego,
+									w którym upłynął termin płatności podatku</b
+								>
+								(zgodnie z Ordynacją podatkową).
+							</li>
+							<li>
+								Dane przetwarzane w ramach usługi Asystenta
+								Głosowego AI (nagrania u dostawców AI,
+								zaszyfrowane audyty techniczne w bazie
+								Operatora) – podlegają odrębnym, skróconym
+								okresom opisanym szczegółowo w punkcie 10 oraz w
+								<a href="regulamin.html#dpa"
+									>§ 11 Regulaminu (DPA)</a
+								>.
+							</li>
+							<li>
+								Logi techniczne serwera www – przez okres
+								ograniczony do czasu niezbędnego dla
+								bezpieczeństwa i utrzymania Serwisu zgodnie z
+								polityką dostawcy hostingu.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Przysługuje Ci prawo żądania od Administratora:
+						<ul>
+							<li>
+								dostępu do danych osobowych Ciebie dotyczących
+								(art. 15 RODO),
+							</li>
+							<li>ich sprostowania (art. 16 RODO),</li>
+							<li>
+								usunięcia – „prawo do bycia zapomnianym” (art.
+								17 RODO),
+							</li>
+							<li>ograniczenia przetwarzania (art. 18 RODO),</li>
+							<li>przenoszenia danych (art. 20 RODO),</li>
+							<li>
+								<b>cofnięcia zgody w dowolnym momencie</b> (w
+								odniesieniu do danych przetwarzanych na
+								podstawie zgody, np. cookies analitycznych), bez
+								wpływu na zgodność z prawem przetwarzania
+								dokonanego przed jej cofnięciem.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Przysługuje Ci prawo wniesienia sprzeciwu wobec
+						przetwarzania danych opartego na prawnie uzasadnionym
+						interesie Administratora (art. 21 RODO), o ile nie
+						istnieją ważne prawnie uzasadnione podstawy nadrzędne
+						wobec Twoich interesów, praw i wolności (w szczególności
+						ustalenie, dochodzenie lub obrona roszczeń).
+					</li>
+					<li>
+						Przysługuje Ci prawo wniesienia skargi do organu
+						nadzorczego –
+						<b>Prezesa Urzędu Ochrony Danych Osobowych (UODO)</b>.
+						Aktualne dane kontaktowe znajdują się na stronie
+						<a href="https://uodo.gov.pl/">uodo.gov.pl</a>.
+					</li>
+					<li>
+						Podanie danych osobowych jest dobrowolne, lecz niezbędne
+						do obsługi zapytania lub zawarcia i realizacji umowy.
+					</li>
+					<li>
+						W stosunku do użytkowników Serwisu nie są podejmowane
+						decyzje w sposób wyłącznie zautomatyzowany wywołujące
+						skutki prawne (art. 22 RODO), w tym profilowanie
+						marketingowe.
+					</li>
+					<li>
+						<b>Transfer danych poza EOG:</b> W związku z
+						korzystaniem z infrastruktury AI, usług chmurowych oraz
+						– po uruchomieniu – analityki, dane mogą być
+						przekazywane poza Europejski Obszar Gospodarczy (w
+						szczególności do USA i Wielkiej Brytanii). Transfery
+						odbywają się wyłącznie na podstawie instrumentów z
+						rozdziału V RODO: decyzji Komisji Europejskiej
+						stwierdzających odpowiedni stopień ochrony (w tym dla
+						Wielkiej Brytanii oraz w ramach EU-U.S. Data Privacy
+						Framework dla certyfikowanych odbiorców) lub
+						Standardowych Klauzul Umownych (SCC) z wymaganymi
+						środkami uzupełniającymi. Kopię lub informacje o
+						stosowanych zabezpieczeniach można uzyskać, pisząc na
+						adres Operatora.
+					</li>
+				</ol>
+
+				<h2>5. Informacje w formularzach</h2>
+				<ol>
+					<li>
+						Formularz na stronie zawiera pola na nazwę firmy i numer
+						telefonu. Na dzień aktualizacji niniejszej polityki
+						działa wyłącznie w trybie demonstracyjnym w przeglądarce
+						i nie przesyła danych na serwer Operatora (dane mogą być
+						widoczne jedynie lokalnie w konsoli przeglądarki
+						użytkownika). W sprawie oferty prosimy o kontakt
+						e-mailowy lub telefoniczny.
+					</li>
+					<li>
+						Przed uruchomieniem produkcyjnej wysyłki formularza
+						Operator zaktualizuje niniejszą politykę o pełną
+						informację o odbiorcach, miejscu przechowywania i
+						okresie retencji danych z formularza.
+					</li>
+				</ol>
+
+				<h2>6. Logi Administratora</h2>
+				<ol>
+					<li>
+						Zdarzenia techniczne dotyczące działania Serwisu mogą
+						podlegać logowaniu wyłącznie w celu administrowania
+						Serwisem, wykrywania nadużyć i zapewnienia
+						bezpieczeństwa.
+					</li>
+				</ol>
+
+				<h2>7. Istotne techniki marketingowe i zasoby zewnętrzne</h2>
+				<ol>
+					<li>
+						Operator planuje w przyszłości uruchomić Google
+						Analytics w celu analizy statystycznej ruchu w Serwisie.
+						Na dzień aktualizacji niniejszej polityki skrypt Google
+						Analytics nie jest zainstalowany i nie zbiera danych.
+					</li>
+					<li>
+						Przed uruchomieniem analityki zostanie wdrożony panel
+						zarządzania zgodami (CMP) zgodny z RODO oraz art. 399
+						Prawa komunikacji elektronicznej. Skrypt analityczny
+						będzie uruchamiany wyłącznie po uprzedniej, dobrowolnej
+						zgodzie użytkownika; odmowa nie ograniczy dostępu do
+						oferty ani kontaktu.
+					</li>
+					<li>
+						Na dzień aktualizacji niniejszej polityki Serwis pobiera
+						zasoby statyczne z serwerów zewnętrznych: Google Fonts
+						oraz Tailwind CSS CDN (cdn.tailwindcss.com). Pobranie
+						tych zasobów wymaga technicznego połączenia przeglądarki
+						z dostawcą (przekazanie adresu IP i nagłówków
+						przeglądarki). Połączenia te są niezależne od planowanej
+						analityki i zostaną docelowo ograniczone przez lokalny
+						hosting zasobów na serwerze Operatora.
+					</li>
+				</ol>
+
+				<h2>8. Informacja o plikach cookies (art. 399–400 PKE)</h2>
+				<ol>
+					<li>
+						Zasady przechowywania i uzyskiwania dostępu do
+						informacji na urządzeniu końcowym użytkownika (w tym
+						plików cookies) regulują art. 399–400 ustawy z dnia 12
+						lipca 2024 r. – Prawo komunikacji elektronicznej (PKE)
+						oraz RODO.
+					</li>
+					<li>
+						Na dzień aktualizacji niniejszej polityki kod Serwisu
+						nie zapisuje własnych plików cookies ani nie uruchamia
+						cookies analitycznych (Google Analytics). Pliki
+						technicznie niezbędne mogą być stosowane wyłącznie przez
+						infrastrukturę hostingową w zakresie koniecznym do
+						transmisji i bezpieczeństwa (art. 399 ust. 3 PKE – nie
+						wymagają zgody).
+					</li>
+					<li>
+						Pliki cookies („ciasteczka”) to niewielkie pliki
+						tekstowe zapisywane w urządzeniu końcowym użytkownika,
+						zawierające zazwyczaj nazwę domeny, czas przechowywania
+						oraz unikalny identyfikator.
+					</li>
+					<li>
+						Po wdrożeniu analityki i wyrażeniu zgody przez
+						użytkownika cookies analityczne będą wykorzystywane do
+						tworzenia statystyk ruchu. Przed ich uruchomieniem
+						niniejsza polityka zostanie uzupełniona o tabelę
+						zawierającą nazwy plików, dostawców, cele i okresy
+						ważności. Dane analityczne zawierające identyfikatory
+						internetowe stanowią dane osobowe (nie są automatycznie
+						uznawane za anonimowe).
+					</li>
+					<li>
+						Użytkownik może w każdej chwili zmienić ustawienia
+						dotyczące cookies lub je usunąć w ustawieniach swojej
+						przeglądarki internetowej.
+					</li>
+				</ol>
+
+				<h2>
+					9. Zarządzanie plikami cookies – wyrażanie i cofanie zgody
+				</h2>
+				<ol>
+					<li>
+						Obecnie baner zgód nie jest wyświetlany, ponieważ Serwis
+						nie stosuje cookies wymagających zgody (analitycznych
+						ani marketingowych). Po ich wdrożeniu użytkownik będzie
+						mógł w równorzędny sposób zaakceptować lub odrzucić
+						cookies nieobowiązkowe oraz w dowolnym momencie wycofać
+						zgodę w panelu dostępnym w stopce Serwisu.
+					</li>
+					<li>
+						Instrukcje zarządzania cookies w poszczególnych
+						przeglądarkach (Chrome, Firefox, Safari, Edge, Opera)
+						dostępne są w dokumentacji ich producentów.
+					</li>
+				</ol>
+
+				<h2 id="asystent-ai">
+					10. Przetwarzanie danych w ramach usługi Asystenta Głosowego
+					AI
+				</h2>
+				<ol>
+					<li>
+						W zakresie obsługi połączeń telefonicznych kierowanych
+						do klientów Operatora (warsztatów samochodowych i innych
+						firm usługowych),
+						<b>Administratorami Danych Osobowych (ADO)</b> osób
+						dzwoniących są te firmy. Operator (Tymur Surkis) działa
+						wyłącznie jako
+						<b>Podmiot Przetwarzający (Procesor)</b> na podstawie
+						umowy powierzenia przetwarzania danych osobowych (DPA)
+						zawartej w
+						<a href="regulamin.html#dpa">§ 11 Regulaminu</a>.
+					</li>
+					<li>
+						Zakres przetwarzanych danych osób dzwoniących obejmuje:
+						numer telefonu (Caller ID lub podany ustnie jako
+						niezweryfikowany przy numerze ukrytym), imię (oraz
+						ewentualnie nazwisko, jeśli zostało podane), markę i
+						model pojazdu (jeśli dotyczy), opis sprawy lub usterki
+						oraz preferowany lub zarezerwowany termin wizyty. W
+						Trybie Kalendarza asystent sprawdza dostępność i
+						zapisuje rezerwację w jednym podłączonym kalendarzu
+						Google warsztatu. W Trybie Zgłoszeniowym (Relay),
+						również przy niedostępności kalendarza, przekazuje
+						zgłoszenie jednemu wskazanemu pracownikowi firmy
+						<b>wyłącznie przez SMS (SMSAPI)</b> bez wiążącego
+						potwierdzenia terminu – wizytę potwierdza firma
+						obsługująca osobę dzwoniącą. Powiadomienia nie są
+						wysyłane e-mailem ani do osób dzwoniących.
+					</li>
+					<li>
+						W celu realizacji połączeń głosowych i obsługi zgłoszeń
+						Operator korzysta z następujących podprocesorów
+						technologicznych:
+						<ul>
+							<li>
+								<b>ElevenLabs Inc. (USA)</b> – rozpoznawanie i
+								synteza mowy oraz obsługa dialogu głosowego w
+								czasie rzeczywistym,
+							</li>
+							<li>
+								<b
+									>Dostawca modelu językowego LLM (OpenAI
+									OpCo, LLC, Anthropic, PBC lub Google LLC)</b
+								>
+								– w zależności od aktualnej konfiguracji
+								technologicznej, przetwarzanie języka
+								naturalnego za pośrednictwem API, z wyłączonym
+								trenowaniem modeli na danych rozmówców,
+							</li>
+							<li>
+								<b>Zadarma Bulgaria Ltd. (Bułgaria / EOG)</b> –
+								obsługa telefonii VoIP i trunków SIP,
+							</li>
+							<li>
+								<b
+									>LINK Mobility Poland sp. z o.o. – SMSAPI
+									(Polska / EOG)</b
+								>
+								– wysyłka powiadomień SMS do wskazanego
+								pracownika Klienta,
+							</li>
+							<li>
+								<b>Google LLC (USA)</b> – zapisywanie i
+								weryfikacja terminów wizyt w Google Calendar
+								(wyłącznie w Trybie Kalendarza),
+							</li>
+							<li>
+								<b>Northflank Ltd (Wielka Brytania)</b> –
+								hosting infrastruktury aplikacyjnej Operatora,
+							</li>
+							<li>
+								<b>Neon Inc. (USA / serwery w EOG)</b> – hosting
+								chmurowy bazy danych PostgreSQL z lokalizacją
+								serwerów na terenie Europejskiego Obszaru
+								Gospodarczego.
+							</li>
+						</ul>
+					</li>
+					<li>
+						<b
+							>Okresy retencji i zasada minimalizacji danych w
+							usłudze AI:</b
+						>
+						<ul>
+							<li>
+								Nagrania audio oraz transkrypcje rzeczywistych
+								rozmów u dostawcy warstwy głosowej AI
+								(ElevenLabs) usuwane są automatycznie najpóźniej
+								po
+								<b>72 godzinach od zakończenia rozmowy</b>
+								(okres ten nie dotyczy odrębnych nagrań
+								demonstracyjnych opublikowanych na stronie).
+								Backend Operatora ich nie pobiera, nie
+								przechowuje i nie udostępnia.
+							</li>
+							<li>
+								Dane przesyłane przez API do dostawcy modelu
+								językowego LLM nie są wykorzystywane do
+								trenowania modeli; o ile nie aktywowano
+								korporacyjnego trybu
+								<i>Zero Data Retention (ZDR)</i>, techniczne
+								logi monitorowania nadużyć (<i
+									>abuse monitoring</i
+								>) mogą być przechowywane przez dostawcę LLM do
+								<b>30 dni</b> zgodnie z jego polityką
+								bezpieczeństwa.
+							</li>
+							<li>
+								W bazie danych Operatora (PostgreSQL / Neon)
+								<b
+									>nie przechowuje się zgłoszeń, danych wizyt
+									ani treści SMS</b
+								>. Pozostają tam wyłącznie zaszyfrowane,
+								pozbawione danych identyfikujących audyty
+								działań technicznych przez
+								<b
+									>maksymalnie 30 dni od zakończenia
+									połączenia</b
+								>, po czym są trwale usuwane (kopie zapasowe nie
+								mogą ich przywracać po terminie). Nie zawierają
+								one imienia, numeru telefonu ani jego
+								fragmentów, danych samochodu, opisu problemu,
+								terminu wizyty, treści zgłoszenia, SMS, nagrań
+								ani transkrypcji.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Zgodnie z art. 50 Rozporządzenia (UE) 2024/1689 (AI Act)
+						oraz art. 13 RODO na początku każdego połączenia
+						asystent odtwarza komunikat informujący o rozmowie z
+						systemem AI oraz o jej nagrywaniu i transkrypcji. Za
+						podstawę prawną i treść obowiązku informacyjnego
+						odpowiada firma obsługująca osobę dzwoniącą (ADO), a
+						Operator zapewnia techniczne odtworzenie komunikatu. W
+						sprawach realizacji praw RODO dotyczących rozmów z
+						konkretnym warsztatem lub firmą należy kontaktować się
+						bezpośrednio z jej Administratorem Danych; Operator
+						wspiera go w realizacji tych żądań na zasadach
+						określonych w DPA.
+					</li>
+				</ol>
+			</article>
+			<div class="mt-12 flex flex-wrap gap-6 text-sm font-semibold">
+				<a
+					href="/"
+					class="text-terracottaDeep underline underline-offset-4 hover:text-darkBg"
+					>Wróć na stronę główną</a
+				>
+				<a
+					href="regulamin.html"
+					class="text-darkBg/70 underline underline-offset-4 hover:text-terracotta"
+					>Zobacz Regulamin</a
+				>
+			</div>
+		</main>
+		<footer class="bg-darkBg text-bgWhite/70 px-6 py-8">
+			<div
+				class="max-w-3xl mx-auto flex flex-wrap gap-4 items-center justify-between text-sm"
+			>
+				<p>&copy; 2026 Gloso.</p>
+				<div class="flex flex-wrap gap-4 items-center">
+					<a
+						href="regulamin.html"
+						class="hover:text-bgWhite transition-colors"
+						>Regulamin</a
+					>
+					<a
+						href="mailto:kontakt@gloso.pl"
+						class="break-all hover:text-bgWhite transition-colors"
+						>kontakt@gloso.pl</a
+					>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
